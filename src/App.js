@@ -12,6 +12,7 @@ import product from "./assets/product/example-product.jpeg"
 
 import CategoryCard from './components/CategoryCard';
 import ProductCard from './components/ProductCard';
+import Footer from './layout/Footer';
 
 function App() {
   return (
@@ -37,12 +38,14 @@ function App() {
 
             {
                 [1,2,3,4,5,6,7].map((item, idx) => {
-                    return <ProductCard className="basis-[300px] " urlImg={product}/>
+                    return <ProductCard className="basis-[300px]" urlImg={product}/>
                 })
             }
 
         </section>
-
+        
+        
+        <Footer />
     </div>
   );
 }
