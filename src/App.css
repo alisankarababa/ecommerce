@@ -53,3 +53,7 @@
 .container-small {
     @apply container-common max-w-[1050px];
 }
+
+.container-big {
+    @apply container-common max-w-[1440px];
+}
