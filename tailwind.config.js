@@ -31,6 +31,7 @@ module.exports = {
                 "bgclr-primary": "var(--primary-color)",
                 "bgclr-secondary-1": "var(--secondary-color-1)",
                 "bgclr-alert": "var(--alert-color)",
+                "bgclr-ligth-gray-1": "var(--light-gray-1)",
 
             },
 
