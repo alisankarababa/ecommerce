@@ -17,7 +17,7 @@ export default function Footer() {
 			</div>
 			<div className="">
 
-			<div className="flex justify-between py-[3.125rem] container-small">
+			<div className="flex gap-x-[1.875rem] py-[3.125rem] container-small">
 				<FooterColumn
 					title="Company Info"
 					items={["About Us", "Carrier", "We are hiring", "Blog"]}
