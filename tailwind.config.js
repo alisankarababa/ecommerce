@@ -11,7 +11,7 @@ module.exports = {
                 "clr-disabled-element": "var(--disabled-element-color)",
                 "clr-primary": "var(--primary-color)",
                 "clr-dark": "var(--dark-color)",
-                "clr-secondary-1": "#40BB15",
+                "clr-secondary-1": "var(--secondary-color-1)",
                 "clr-secondary-2": "#3C403D",
                 "clr-second": "#737373",
                 "clr-light": "var(--light-color)",
@@ -28,6 +28,10 @@ module.exports = {
                 
                 "bgclr-dark": "var(--dark-color)",
                 "bgclr-light": "var(--light-color)",
+                "bgclr-primary": "var(--primary-color)",
+                "bgclr-secondary-1": "var(--secondary-color-1)",
+                "bgclr-alert": "var(--alert-color)",
+
             },
 
             fontFamily: {
