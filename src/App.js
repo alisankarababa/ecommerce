@@ -1,5 +1,5 @@
 import './App.css';
-import Header from './components/Header';
+import Header from './layout/Header';
 
 
 import men from "./assets/category-card/men.jpeg"

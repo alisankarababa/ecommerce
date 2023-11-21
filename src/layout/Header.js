@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom/cjs/react-router-dom";
-import Brand from "./Brand";
+import Brand from "../components/Brand";
 
 
 
