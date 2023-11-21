@@ -45,3 +45,11 @@
 .img-absolute {
     @apply h-full w-full object-cover absolute translate-x-1/2 right-1/2;
 }
+
+.container-common {
+    @apply my-0 mx-auto;
+}
+
+.container-small {
+    @apply container-common max-w-[1050px];
+}
