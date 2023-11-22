@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom/cjs/react-router-dom";
 import Brand from "../components/Brand";
+import IconWithText from "../components/IconWithText";
 
 export default function Header() {
 	return (
@@ -8,22 +9,16 @@ export default function Header() {
             <div className="text-clr-light bg-bgclr-dark py-[1.5rem]">
                 <nav className="container-big flex justify-between items-center">
                     <div className="flex gap-[1.875rem]">
-                        <span className="flex items-center gap-[0.3125rem]">
-                            <i class="fa-solid fa-phone" />
-                            <span className="text-[0.875rem] font-bold">(225) 555-0118</span>
-                        </span>
-                        <span className="flex items-center gap-[0.3125rem]">
-                                <i class="fa-regular fa-envelope" />
-                                <span className="text-[0.875rem] font-bold"> michelle.rivera@example.com</span>
-                        </span>
+                        <IconWithText className="flex items-center gap-[0.3125rem]" classText="text-[0.875rem] font-bold" classIcon="fa-solid fa-phone" text="(225) 555-0118"/>
+                        <IconWithText className="flex items-center gap-[0.3125rem]" classText="text-[0.875rem] font-bold" classIcon="fa-regular fa-envelope" text="michelle.rivera@example.com"/>
                     </div>
-                    <span className="text-[0.875rem] font-bold">Follow Us  and get a chance to win 80% off</span>
+                    <span className="text-[0.875rem] font-bold">Follow Us and get a chance to win 80% off</span>
                     <span className="flex items-center gap-[1rem]">
                         <span className="text-[0.875rem] font-bold">Follow Us :</span>
-						<i class="fa-brands fa-instagram"></i>
-						<i class="fa-brands fa-youtube"></i>
-                        <i class="fa-brands fa-facebook"></i>
-						<i class="fa-brands fa-twitter"></i>
+						<i className="fa-brands fa-instagram"></i>
+						<i className="fa-brands fa-youtube"></i>
+                        <i className="fa-brands fa-facebook"></i>
+						<i className="fa-brands fa-twitter"></i>
                     </span>
                 </nav>
             </div>
@@ -38,7 +33,7 @@ export default function Header() {
 							<NavLink to="/shop">
 								Shop
 							</NavLink> {" "}
-                            <i class="fa-solid fa-chevron-down"></i>
+                            <i className="fa-solid fa-chevron-down"></i>
 						</li>
 						<li>
 							<NavLink to="#">About</NavLink>
@@ -55,20 +50,17 @@ export default function Header() {
 					</ul>
 					<ul className="text-clr-primary flex gap-x-[1.875rem]">
 						<li>
-							<span>
-								<i className="fa-regular fa-user"></i> Login
-							</span>{" "}
+                            <IconWithText classIcon="fa-regular fa-user" text=" Login "/>
 							/ <span>Register</span>
 						</li>
 						<li>
 							<i className="fa-solid fa-magnifying-glass"></i>
 						</li>
 						<li>
-							<i className="fa-solid fa-cart-shopping"></i> 1
+                            <IconWithText classIcon="fa-solid fa-cart-shopping" text=" 1"/>
 						</li>
 						<li>
-							<i className="fa-regular fa-heart"></i>
-							<span> 1</span>
+                            <IconWithText classIcon="fa-regular fa-heart" text=" 1"/>
 						</li>
 					</ul>
 				</nav>
