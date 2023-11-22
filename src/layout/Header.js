@@ -32,12 +32,13 @@ export default function Header() {
 				<nav className="grow flex justify-between">
 					<ul className="flex gap-5 text-clr-second">
 						<li>
-							<NavLink to="#">Home</NavLink>
+							<NavLink to="/home">Home</NavLink>
 						</li>
-						<li>
-							<NavLink to="#" className="text-clr-dark">
+						<li className="text-clr-dark">
+							<NavLink to="/shop">
 								Shop
-							</NavLink>
+							</NavLink> {" "}
+                            <i class="fa-solid fa-chevron-down"></i>
 						</li>
 						<li>
 							<NavLink to="#">About</NavLink>
