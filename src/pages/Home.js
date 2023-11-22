@@ -18,10 +18,8 @@ export default function Home() {
 
     return (
         <>
-        <Header />
-
-        <section>
-				<div className="w-[80%] flex gap-x-[2rem] aspect-[2/1]">
+            <section className="container-small">
+				<div className="flex gap-x-[2rem] aspect-[2/1]">
 					<div className="grow-[2] basis-0">
 						<CategoryCard
 							className="w-full h-full"
@@ -51,10 +49,13 @@ export default function Home() {
 				</div>
 			</section>
 
-            <section className="flex flex-wrap gap-[2rem]">
-				{[1, 2, 3, 4, 5, 6, 7].map((item, idx) => {
-					return <ProductCard className="basis-[300px]" urlImg={product} />;
+            <section className="container-small">
+
+                <div className="py-[5rem] flex flex-wrap gap-y-[5rem] gap-x-[1.875rem] justify-center">
+				{Array(8).fill(1).map((item, idx) => {
+					return <ProductCard key={idx} className="basis-[240px]" urlImg={product} />;
 				})}
+                </div>
 			</section>
 
 
