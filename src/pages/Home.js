@@ -1,7 +1,3 @@
-import Footer from "../layout/Footer";
-import Header from "../layout/Header";
-
-
 import CategoryCard from "../components/CategoryCard";
 import ProductCard from '../components/ProductCard';
 
@@ -11,8 +7,6 @@ import accessory from "../assets/category-card/accessories.jpeg"
 import kids from "../assets/category-card/kids.jpeg"
 
 import product from "../assets/product/example-product.jpeg"
-
-
 
 export default function Home() {
 
@@ -57,9 +51,6 @@ export default function Home() {
 				})}
                 </div>
 			</section>
-
-
-        <Footer />
         </>
     );
 }

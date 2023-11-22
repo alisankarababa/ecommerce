@@ -1,24 +1,16 @@
 import './App.css';
-import Home from './pages/Home';
-import Shop from "./pages/Shop";
 
-import { Switch, Route, Redirect } from 'react-router-dom/cjs/react-router-dom';
+
+import Header from './layout/Header';
+import Footer from './layout/Footer';
+import PageContent from './layout/PageContent';
 
 function App() {
   return (
 		<div className="App font-fnt-mont">
-			
-            <Switch>
-				<Route path="/shop">
-					<Shop />
-				</Route>
-				<Route path="/home">
-					<Home />
-				</Route>
-				<Route path="/">
-					<Redirect to="/home" />
-				</Route>
-			</Switch>
+            <Header />
+            <PageContent />
+            <Footer />
 		</div>
 	);
 }
