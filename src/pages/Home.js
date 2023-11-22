@@ -1,5 +1,6 @@
 import CategoryCard from "../components/CategoryCard";
 import ProductCard from '../components/ProductCard';
+import { Carousel } from 'react-responsive-carousel';
 
 import men from "../assets/category-card/men.jpeg"
 import women from "../assets/category-card/women.jpeg"
@@ -8,10 +9,45 @@ import kids from "../assets/category-card/kids.jpeg"
 
 import product from "../assets/product/example-product.jpeg"
 
+import carouselImg from "../assets/carousel-imgs/carousel-img1.jpeg"
+
+
 export default function Home() {
 
     return (
         <>
+            <section> 
+            <Carousel 
+                showThumbs={false}
+                infiniteLoop={true}
+                renderIndicator={(onClickHandler, isSelected, index, label) => {
+                    const defStyle = { backgroundColor: "white", opacity: "50%", cursor: "pointer", width: "50px", height: "10px", display: "inline-block" };
+                    const style = isSelected
+                      ? { ...defStyle, opacity: "100%" }
+                      : { ...defStyle };
+                    return (
+                      <span
+                        style={style}
+                        onClick={onClickHandler}
+                        value={index}
+                        key={index}
+                        role="button"
+                        tabIndex={0}
+                        aria-label={`${label} ${index + 1}`}
+                      >
+                      </span>
+                    );
+                  }}
+                >
+                <div>
+                        <img src={carouselImg} alt="img" />
+                </div>
+                <div>
+                        <img src={carouselImg} alt="img" />
+                </div>
+            </Carousel>
+            </section>
+
             <section className="container-small">
 				<div className="flex gap-x-[2rem] aspect-[2/1]">
 					<div className="grow-[2] basis-0">
