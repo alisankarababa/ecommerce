@@ -6,8 +6,8 @@ export default function Header() {
 	return (
 		<header className="">
 
-            <div className="text-clr-light bg-bgclr-dark py-[1.5rem]">
-                <nav className="container-big flex justify-between items-center">
+            <div className="text-clr-light bg-bgclr-dark">
+                <nav className="container-big py-[1.5em] px-[1em] flex justify-between items-center">
                     <div className="flex gap-[1.875rem]">
                         <IconWithText className="flex items-center gap-[0.3125rem]" classText="text-[0.875rem] font-bold" classIcon="fa-solid fa-phone" text="(225) 555-0118"/>
                         <IconWithText className="flex items-center gap-[0.3125rem]" classText="text-[0.875rem] font-bold" classIcon="fa-regular fa-envelope" text="michelle.rivera@example.com"/>
@@ -22,7 +22,7 @@ export default function Header() {
                     </span>
                 </nav>
             </div>
-			<div className="container-big flex py-[1.5em] gap-x-[2.5rem] items-center pt-[0.75rem] pb-[0.5rem]">
+			<div className="container-big px-[1em] py-[1.5em] flex gap-x-[2.5rem] items-center">
 				<Brand />
 				<nav className="grow flex justify-between">
 					<ul className="flex gap-5 text-clr-second">
