@@ -1,5 +1,7 @@
 import CategoryCard from "../components/CategoryCard";
 import ProductCard from '../components/ProductCard';
+import FeaturedPost from "../components/FeaturedPost";
+
 import { Carousel } from 'react-responsive-carousel';
 import { Link } from "react-router-dom"
 
@@ -12,7 +14,9 @@ import product from "../assets/product/example-product.jpeg"
 
 import carouselImg from "../assets/carousel-imgs/carousel-img1.jpeg"
 import hero2 from "../assets/hero-2/hero-2.png"
+import manWoman from "../assets/asian-woman-man-with-winter-clothes 1.png"
 
+import featuredPost1 from "../assets/featured-posts/featured-post1.jpeg"
 
 export default function Home() {
 
@@ -164,6 +168,38 @@ export default function Home() {
                 </div>
                 </Carousel>
             </section>
+
+            <section className="container-big">
+                <div className="flex justify-between">
+                    <div>
+                        <img src={manWoman} alt="img"/>
+                    </div>
+                    <div className="flex flex-col justify-center items-start">
+                    <div className="font-bold flex flex-col items-start gap-y-[2.1875rem] justify-between">
+                            <span className="text-clr-muted">SUMMER 2020</span>
+                            <h2 className="text-[3.625rem] text-clr-dark text-left">Part of the Neural Universe</h2>
+                            <span className="text-[1.25rem] w-[70%] text-left font-normal text-clr-second">We know how large objects will act, but things on a small scale.</span>
+                            <div>
+                                <Link className="inline-block btn-md text-[0.875rem] btn-success mr-[0.625rem]" to="#">BUY NOW</Link>
+                                <Link className="inline-block btn-md text-[0.875rem] btn-success-outline" to="#">READ MORE</Link>
+                            </div>
+                    </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <section className="container-small py-[7rem]">
+                <span className="block mb-[0.625rem] font-bold text-[0.875rem] text-clr-primary">Practice Advice</span>
+                <h2 className="mb-[0.625rem] font-bold text-clr-dark text-[2.5rem]">Featured Posts</h2>
+                <p className="max-w-[44%] mx-auto mb-[5rem] text-clr-second text-[0.875rem]">Problems trying to resolve the conflict between <br/>the two major realms of Classical physics: Newtonian mechanics </p>
+                <div className="flex justify-between gap-x-[0.625rem] ">
+                {
+                    Array(3).fill(1).map( ( item, idx ) => <FeaturedPost key={idx} className="base-[348px]" urlImg={featuredPost1}/>)
+                }
+                </div>
+            </section>
+
         </>
     );
 }
