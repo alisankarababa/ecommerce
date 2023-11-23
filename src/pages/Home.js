@@ -18,10 +18,11 @@ export default function Home() {
 
     return (
         <>
-            <section> 
-            <Carousel 
+            <section className="container-big">
+            <Carousel
                 showThumbs={false}
                 infiniteLoop={true}
+                showStatus={false}
                 renderIndicator={(onClickHandler, isSelected, index, label) => {
                     const defStyle = { backgroundColor: "white", opacity: "50%", cursor: "pointer", width: "50px", height: "10px", display: "inline-block" };
                     const style = isSelected
@@ -41,11 +42,19 @@ export default function Home() {
                     );
                   }}
                 >
-                <div>
-                        <img src={carouselImg} alt="img" />
+                <div className="relative aspect-[2/1] text-clr-light">
+                    <img className="img-absolute" src={carouselImg} alt="img" />
+                    <div className="relative container-small z-10 top-[29%]">
+                        <div className="font-bold w-[60%] flex flex-col items-start gap-y-[2.1875rem]">
+                            <span>SUMMER 2020</span>
+                            <h2 className="text-[3.625rem]">NEW COLLECTION</h2>
+                            <span className="text-[1.25rem] text-left font-normal w-[60%]">We know how large objects will act, but things on a small scale.</span>
+                            <Link className="btn-md btn-success text-[1.25rem]" to="/shop">SHOP NOW</Link>
+                        </div>
+                    </div>
                 </div>
-                <div>
-                        <img src={carouselImg} alt="img" />
+                <div className="relative aspect-[2/1]">
+                    <img className="img-absolute" src={carouselImg} alt="img" />
                 </div>
             </Carousel>
             </section>
