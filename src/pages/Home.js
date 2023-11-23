@@ -50,30 +50,33 @@ export default function Home() {
             </Carousel>
             </section>
 
-            <section className="container-small">
+            <section className="text-center container-small py-[5em]">
+
+                <h2 className="mb-[0.625rem] text-clr-dark text-[1.5rem] font-bold">EDITOR’S PICK</h2>
+                <p className="mb-[3rem] text-[0.875rem] text-clr-second">Problems trying to resolve the conflict between </p>
 				<div className="flex gap-x-[2rem] aspect-[2/1]">
-					<div className="grow-[2] basis-0">
+					<div className="basis-[539px]">
 						<CategoryCard
 							className="w-full h-full"
 							urlImg={men}
 							textBtn={"MEN"}
 						/>
 					</div>
-					<div className="grow-[1] basis-0">
+					<div className="basis-[239px]">
 						<CategoryCard
 							className="w-full h-full"
 							urlImg={women}
 							textBtn={"WOMEN"}
 						/>
 					</div>
-					<div className="grow-[1] basis-0 flex flex-col gap-y-[1rem]">
+					<div className="basis-[239px] flex flex-wrap gap-y-[1rem]">
 						<CategoryCard
-							className="grow basis-0"
+							className="basis-[239px]"
 							urlImg={accessory}
 							textBtn={"WOMEN"}
 						/>
 						<CategoryCard
-							className="grow basis-0"
+							className="grow basis-[239px]"
 							urlImg={kids}
 							textBtn={"KIDS"}
 						/>
