@@ -169,12 +169,12 @@ export default function Home() {
                 </Carousel>
             </section>
 
-            <section className="container-big">
-                <div className="flex justify-between">
-                    <div>
+            <section className="max-w-[1248px] m-auto">
+                <div className="flex gap-x-[2rem]">
+                    <div className="basis-[624px] grow-[9]">
                         <img src={manWoman} alt="img"/>
                     </div>
-                    <div className="flex flex-col justify-center items-start">
+                    <div className="basis-[484px] grow-[7] flex flex-col justify-center items-start">
                     <div className="font-bold flex flex-col items-start gap-y-[2.1875rem] justify-between">
                             <span className="text-clr-muted">SUMMER 2020</span>
                             <h2 className="text-[3.625rem] text-clr-dark text-left">Part of the Neural Universe</h2>
