@@ -36,3 +36,50 @@
     transform: rotate(360deg);
   }
 }
+
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+.img-absolute {
+    @apply h-full w-full object-cover absolute translate-x-1/2 right-1/2;
+}
+
+.container-common {
+    @apply my-0 mx-auto;
+}
+
+.container-small {
+    @apply container-common max-w-[1050px];
+}
+
+.container-medium {
+    @apply container-common max-w-[1200px];
+
+}
+
+
+.container-big {
+    @apply container-common max-w-[1440px];
+}
+
+.btn-md {
+    @apply py-[0.75em] px-[2em] rounded-[5px];
+}
+
+.btn-small {
+    @apply py-[0.714em] px-[1.43em] rounded-[5px]
+}
+
+.btn-success {
+    @apply text-clr-light bg-bgclr-success;
+}
+
+.btn-primary {
+    @apply text-clr-light bg-bgclr-primary
+}
+
+.btn-success-outline {
+    @apply text-clr-success bg-bgclr-light border-[1px] border-clr-success;
+}
