@@ -18,6 +18,63 @@ import manWoman from "../assets/asian-woman-man-with-winter-clothes 1.png"
 
 import featuredPost1 from "../assets/featured-posts/featured-post1.jpeg"
 
+const eArrow = Object.freeze({
+    prev: "prev",
+    right: "rigth"
+})
+
+function getCustomRenderArrowFunction( enumVal ) {
+
+    let icon = "";
+    let position = "";
+
+    switch (enumVal) {
+        case eArrow.prev:
+            icon = "fa-chevron-left"
+            position = "left-0";
+            break;
+        case eArrow.next:
+            icon = "fa-chevron-right"
+            position = "right-0"
+            break;
+        default:
+            break;
+    }
+
+    return ( clickHandler, hasPrev, label )  => {
+        return (
+            <div
+            className={`${
+              hasPrev ? 'absolute' : 'hidden'
+            } top-0 bottom-0 ${position} flex justify-center items-center p-3 opacity-30 hover:opacity-100 cursor-pointer z-20`}
+            onClick={clickHandler}
+            >
+            {
+                <i className={`text-[2rem] text-clr-light fa-solid fa-chevron-left ${icon}`}></i>
+            }
+        </div>
+    );
+}}
+
+function customRenderIndicatorFunction(onClickHandler, isSelected, index, label) {
+    const defStyle = { backgroundColor: "white", opacity: "50%", cursor: "pointer", width: "50px", height: "10px", display: "inline-block" };
+    const style = isSelected
+      ? { ...defStyle, opacity: "100%" }
+      : { ...defStyle };
+    return (
+      <span
+        style={style}
+        onClick={onClickHandler}
+        value={index}
+        key={index}
+        role="button"
+        tabIndex={0}
+        aria-label={`${label} ${index + 1}`}
+      >
+      </span>
+    );
+}
+
 export default function Home() {
 
     return (
@@ -27,24 +84,9 @@ export default function Home() {
                 showThumbs={false}
                 infiniteLoop={true}
                 showStatus={false}
-                renderIndicator={(onClickHandler, isSelected, index, label) => {
-                    const defStyle = { backgroundColor: "white", opacity: "50%", cursor: "pointer", width: "50px", height: "10px", display: "inline-block" };
-                    const style = isSelected
-                      ? { ...defStyle, opacity: "100%" }
-                      : { ...defStyle };
-                    return (
-                      <span
-                        style={style}
-                        onClick={onClickHandler}
-                        value={index}
-                        key={index}
-                        role="button"
-                        tabIndex={0}
-                        aria-label={`${label} ${index + 1}`}
-                      >
-                      </span>
-                    );
-                  }}
+                renderArrowPrev={getCustomRenderArrowFunction(eArrow.prev)}
+                renderArrowNext={getCustomRenderArrowFunction(eArrow.next)}
+                renderIndicator={customRenderIndicatorFunction}
                 >
                 <div className="relative aspect-[2/1] text-clr-light">
                     <img className="img-absolute" src={carouselImg} alt="img" />
@@ -115,25 +157,10 @@ export default function Home() {
                 showThumbs={false}
                 infiniteLoop={true}
                 showStatus={false}
-                renderIndicator={(onClickHandler, isSelected, index, label) => {
-                    const defStyle = { backgroundColor: "white", opacity: "50%", cursor: "pointer", width: "50px", height: "10px", display: "inline-block" };
-                    const style = isSelected
-                      ? { ...defStyle, opacity: "100%" }
-                      : { ...defStyle };
-                    return (
-                      <span
-                        style={style}
-                        onClick={onClickHandler}
-                        value={index}
-                        key={index}
-                        role="button"
-                        tabIndex={0}
-                        aria-label={`${label} ${index + 1}`}
-                      >
-                      </span>
-                    );
-                  }}
-                >
+                renderArrowPrev={getCustomRenderArrowFunction(eArrow.prev)}
+                renderArrowNext={getCustomRenderArrowFunction(eArrow.next)}
+                renderIndicator={customRenderIndicatorFunction}
+            >
                 <div className="container-big bg-bgclr-secondary-1 text-clr-light aspect-[2/1] flex items-end">
                     <div className="container-small max-h-[85%] flex flex-wrap justify-between gap-[1.875rem]">
                         <div className="basis-[510px] grow pt-[3.75em] font-bold flex flex-col items-start gap-y-[1.875rem]">
