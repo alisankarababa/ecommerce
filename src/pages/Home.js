@@ -81,7 +81,11 @@ export default function Home() {
 
             <section className="container-small">
 
-                <div className="py-[5rem] flex flex-wrap gap-y-[5rem] gap-x-[1.875rem] justify-center">
+                <h2 className="text-clr-second text-[1.25rem] mb-[0.625rem]">Featured Products</h2>
+                <h3 className="text-clr-dark font-bold text-[1.5rem] mb-[0.625rem]">BESTSELLER PRODUCTS</h3>
+                <p className="text-clr-second">Problems trying to resolve the conflict between </p>
+
+                <div className="py-[5rem] flex flex-wrap gap-y-[5rem] gap-x-[1.875rem]  justify-start">
 				{Array(8).fill(1).map((item, idx) => {
 					return <ProductCard key={idx} className="basis-[240px]" urlImg={product} />;
 				})}
