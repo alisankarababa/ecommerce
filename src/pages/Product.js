@@ -1,10 +1,7 @@
 import Clients from "../components/Clients";
 import Path from "../components/Path";
-import ProductCard from "../components/ProductCard";
-import ShopCard from "../components/ShopCard";
+import SectionProductBestSeller from "../components/product-page/SectionProductBestSeller";
 
-import product from "../assets/product/example-product.jpeg"
-import imgShopCard1 from "../assets/Shop/shopCard1.jpeg";
 
 export default function Product() {
 
@@ -18,8 +15,8 @@ export default function Product() {
                     </div>
                 </div>
 
-
-				<Clients />
-			</>
-		);
+			<SectionProductBestSeller />
+			<Clients />
+		</>
+	);
 }
