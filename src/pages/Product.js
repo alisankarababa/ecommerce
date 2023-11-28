@@ -15,6 +15,7 @@ export default function Product() {
                     </div>
                 </div>
 
+			<SectionMid />
 			<SectionProductBestSeller />
 			<Clients />
 		</>
