@@ -36,7 +36,7 @@ export default function Header() {
                             <i className="fa-solid fa-chevron-down"></i>
 						</li>
 						<li>
-							<NavLink to="#">About</NavLink>
+							<NavLink to="/about">About</NavLink>
 						</li>
 						<li>
 							<NavLink to="#">Blog</NavLink>
