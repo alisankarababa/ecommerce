@@ -4,17 +4,10 @@ import SectionProductBestSeller from "../components/product-page/SectionProductB
 
 
 export default function Product() {
+	return (
+		<>
 
-
-
-    return (
-			<>
-                <div className="bg-bgclr-ligth-gray-1">
-                    <div className="container-big px-[1rem] py-[1.5rem]">
-                        <Path />
-                    </div>
-                </div>
-
+            <ProductNavBar />
 			<SectionMid />
 			<SectionProductBestSeller />
 			<Clients />
