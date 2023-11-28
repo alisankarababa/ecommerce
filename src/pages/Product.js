@@ -3,6 +3,7 @@ import Path from "../components/Path";
 import ProductNavBar from "../components/product-page/ProductNavBar";
 import SectionMid from "../components/product-page/SectionMid";
 import SectionProductBestSeller from "../components/product-page/SectionProductBestSeller";
+import ProductCarouselWithDetails from "../components/product-page/ProductCarouselWithDetails";
 
 
 export default function Product() {
@@ -14,6 +15,7 @@ export default function Product() {
 				</div>
 			</div>
 
+			<ProductCarouselWithDetails />
 			<ProductNavBar />
 			<SectionMid />
 			<SectionProductBestSeller />
