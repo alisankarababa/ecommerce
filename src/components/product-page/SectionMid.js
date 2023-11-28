@@ -39,19 +39,19 @@ export default function SectionMid() {
 								the quick fox jumps over
 							</h5>
 							<IconWithText
-								className="block mb-[0.625rem] flex items-center gap-x-[0.5rem]"
+								className="mb-[0.625rem] flex items-center gap-x-[0.5rem]"
 								classIcon="fa-solid fa-chevron-right"
 								classText="text-[0.875rem] text-clr-second font-bold"
 								text="the quick fox jumps over the lazy dog"
 							/>
 							<IconWithText
-								className="block mb-[0.625rem] flex items-center gap-x-[0.5rem]"
+								className="mb-[0.625rem] flex items-center gap-x-[0.5rem]"
 								classIcon="fa-solid fa-chevron-right"
 								classText="text-[0.875rem] text-clr-second font-bold"
 								text="the quick fox jumps over the lazy dog"
 							/>
 							<IconWithText
-								className="block mb-[0.625rem] flex items-center gap-x-[0.5rem]"
+								className="mb-[0.625rem] flex items-center gap-x-[0.5rem]"
 								classIcon="fa-solid fa-chevron-right"
 								classText="text-[0.875rem] text-clr-second font-bold"
 								text="the quick fox jumps over the lazy dog"
@@ -62,19 +62,19 @@ export default function SectionMid() {
 								the quick fox jumps over
 							</h5>
 							<IconWithText
-								className="block mb-[0.625rem] flex items-center gap-x-[0.5rem]"
+								className="mb-[0.625rem] flex items-center gap-x-[0.5rem]"
 								classIcon="fa-solid fa-chevron-right"
 								classText="text-[0.875rem] text-clr-second font-bold"
 								text="the quick fox jumps over the lazy dog"
 							/>
 							<IconWithText
-								className="block mb-[0.625rem] flex items-center gap-x-[0.5rem]"
+								className="mb-[0.625rem] flex items-center gap-x-[0.5rem]"
 								classIcon="fa-solid fa-chevron-right"
 								classText="text-[0.875rem] text-clr-second font-bold"
 								text="the quick fox jumps over the lazy dog"
 							/>
 							<IconWithText
-								className="block mb-[0.625rem] flex items-center gap-x-[0.5rem]"
+								className="mb-[0.625rem] flex items-center gap-x-[0.5rem]"
 								classIcon="fa-solid fa-chevron-right"
 								classText="text-[0.875rem] text-clr-second font-bold"
 								text="the quick fox jumps over the lazy dog"

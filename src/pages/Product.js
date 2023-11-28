@@ -1,5 +1,7 @@
 import Clients from "../components/Clients";
 import Path from "../components/Path";
+import ProductNavBar from "../components/product-page/ProductNavBar";
+import SectionMid from "../components/product-page/SectionMid";
 import SectionProductBestSeller from "../components/product-page/SectionProductBestSeller";
 
 
@@ -12,7 +14,7 @@ export default function Product() {
 				</div>
 			</div>
 
-            <ProductNavBar />
+			<ProductNavBar />
 			<SectionMid />
 			<SectionProductBestSeller />
 			<Clients />
