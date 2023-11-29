@@ -4,6 +4,7 @@ import Statistics from "../components/about-page/Statistics"
 import SectionTeam from "../components/about-page/SectionTeam";
 import SectionText from "../components/about-page/SectionText";
 import SectionImgVideo from "../components/about-page/SectionImgVideo";
+import HeroAbout2 from "../components/about-page/HeroAbout2";
 
 export default function About() {
     return (
@@ -13,6 +14,7 @@ export default function About() {
                 <SectionImgVideo />
                 <SectionTeam />
 				<Clients />
+                <HeroAbout2 />
 			</>
 		);
 }

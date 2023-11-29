@@ -80,6 +80,10 @@
     @apply text-clr-light bg-bgclr-primary
 }
 
+.btn-light-outline-transparent {
+    @apply text-clr-light border-[1px] border-clr-light
+}
+
 .btn-success-outline {
     @apply text-clr-success bg-bgclr-light border-[1px] border-clr-success;
 }
