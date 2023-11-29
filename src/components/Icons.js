@@ -23,3 +23,8 @@ export function IconTwitter({className}) {
 
     return <Icon classesDefault="fa-brands fa-twitter" classNameFromArgument={className}/>
 }
+
+export function IconPlay({className}) {
+
+    return <Icon classesDefault="fa-solid fa-play" classNameFromArgument={className}/>
+}
