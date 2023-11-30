@@ -1,18 +1,34 @@
-// import { useLocation } from "react-router-dom/cjs/react-router-dom";
+import { useLocation, Link } from "react-router-dom/cjs/react-router-dom";
+import { getClassName } from "../utils/ClassName";
 
-export default function Path() {
+export default function Path({className}) {
 
-    // TODO: when required uncomment and implement the function so that it shows path st x > y > z ... etc
-    // const location = useLocation();
-    // const arrLocation = location.pathname.split("/").filter( item => item !== "");
+    const { pathname } = useLocation();
+    const arrLocation = pathname.split("/").filter( item => item !== "").map(element => {
+        return element.slice(0,1).toUpperCase() + element.slice(1,element.length);
+    });
 
-    // console.log(arrLocation);
-
+    const classesDefault = "flex items-center gap-x-[1rem]";
+    
 	return (
-		<div className="flex items-center gap-x-[1rem]">
-			<span className="text-clr-dark text-[0.875rem] font-bold">Home</span>
+		<div className={getClassName(classesDefault, className)}>
+			<Link to="/home" className="text-clr-dark text-[0.875rem] font-bold">Home</Link>
 			<i className="text-clr-muted fa-solid fa-chevron-right"></i>
-			<span className="text-[0.875rem] text-clr-muted font-bold">Shop</span>
+
+            {
+                arrLocation.map((item, idx) => {
+                    
+                    if(idx < arrLocation.length - 1) {
+                        return(
+                            <>
+                                <Link to={`/${item}`} className="text-clr-dark text-[0.875rem] font-bold">{item.slice(0,1).toUpperCase() + item.slice(1,item.length)}</Link>
+                    			<i className="text-clr-muted fa-solid fa-chevron-right"></i>
+                            </>
+                        )
+                    }
+                    return <span className="text-clr-second text-[0.875rem] font-bold">{item.slice(0,1).toUpperCase() + item.slice(1,item.length)}</span>
+                })
+            }
 		</div>
 	);
 }
