@@ -14,6 +14,11 @@ export function IconFacebook({className}) {
     return <Icon classesDefault="fa-brands fa-facebook" classNameFromArgument={className}/>
 }
 
+export function IconFacebookSquare({className}) {
+
+    return <Icon classesDefault="fa-brands fa-square-facebook" classNameFromArgument={className}/>
+}
+
 export function IconInstagram({className}) {
 
     return <Icon classesDefault="fa-brands fa-instagram" classNameFromArgument={className}/>
@@ -22,6 +27,11 @@ export function IconInstagram({className}) {
 export function IconTwitter({className}) {
 
     return <Icon classesDefault="fa-brands fa-twitter" classNameFromArgument={className}/>
+}
+
+export function IconLinkedIn({className}) {
+
+    return <Icon classesDefault="fa-brands fa-linkedin" classNameFromArgument={className}/>
 }
 
 export function IconPlay({className}) {

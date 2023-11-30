@@ -56,7 +56,6 @@
 
 .container-medium {
     @apply container-common max-w-[1200px];
-
 }
 
 
@@ -66,6 +65,10 @@
 
 .btn-md {
     @apply py-[0.75em] px-[2em] text-[1.25rem] rounded-[5px];
+}
+
+.btn-small-wide {
+    @apply py-[1.07em] px-[2.86em] text-[0.875rem] rounded-[5px];
 }
 
 .btn-small {
