@@ -38,3 +38,18 @@ export function IconPlay({className}) {
 
     return <Icon classesDefault="fa-solid fa-play" classNameFromArgument={className}/>
 }
+
+export function IconPhone({className}) {
+
+    return <Icon classesDefault="fa-solid fa-phone" classNameFromArgument={className}/>
+}
+
+export function IconLocationDot({className}) {
+
+    return <Icon classesDefault="fa-solid fa-location-dot" classNameFromArgument={className}/>
+}
+
+export function IconEnvelope({className}) {
+
+    return <Icon classesDefault="fa-solid fa-envelope" classNameFromArgument={className}/>
+}

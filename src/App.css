@@ -83,10 +83,18 @@
     @apply text-clr-light bg-bgclr-primary
 }
 
+.btn-primary-outline {
+    @apply text-clr-primary border-[1px] border-clr-primary;
+}
+
 .btn-light-outline-transparent {
     @apply text-clr-light border-[1px] border-clr-light
 }
 
 .btn-success-outline {
     @apply text-clr-success bg-bgclr-light border-[1px] border-clr-success;
+}
+
+.pill-shape {
+    @apply rounded-[50rem];
 }
