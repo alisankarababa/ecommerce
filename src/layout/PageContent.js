@@ -5,11 +5,15 @@ import Home from "../pages/Home"
 import Product from "../pages/Product"
 import About from "../pages/About"
 import Team from "../pages/Team"
+import Contact from '../pages/Contact';
 
 export default function PageContent() {
 	return (
         
 		<Switch>
+            <Route path="/contact">
+                <Contact />
+			</Route>
             <Route path="/team">
 				<Team />
 			</Route>
