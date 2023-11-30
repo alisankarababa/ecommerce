@@ -15,7 +15,7 @@ export default function SectionTeam() {
 							realms of Classical physics: Newtonian mechanics{" "}
 						</p>
 					</div>
-					<div className="flex justify-center flex-wrap basis-[19.75rem] gap-[1.875rem]">
+					<div className="flex justify-center flex-wrap gap-[1.875rem]">
 						<CardUser
 							className="basis-[19.75rem]"
 							urlImg={teamMember1}
