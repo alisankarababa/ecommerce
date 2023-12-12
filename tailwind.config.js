@@ -33,8 +33,9 @@ module.exports = {
                 "bgclr-alert": "var(--alert-color)",
                 "bgclr-ligth-gray-1": "var(--light-gray-1)",
                 "bgclr-ligth-gray-2": "var(--light-gray-2)",
-
+                
                 "bgclr-success": "var(--success-color)",
+                "bgclr-hover": "var(--hover-color)",
 
 
             },
