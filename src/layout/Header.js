@@ -42,7 +42,7 @@ export default function Header() {
 							<NavLink to="#">Blog</NavLink>
 						</li>
 						<li>
-							<NavLink to="#">Contact</NavLink>
+							<NavLink to="/contact">Contact</NavLink>
 						</li>
 						<li>
 							<NavLink to="#">Pages</NavLink>
