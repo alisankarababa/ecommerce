@@ -12,6 +12,11 @@ module.exports = {
 
             },
 
+            gridTemplateColumns: {
+                'autofill-minmax20rem1fr': "repeat(auto-fit, minmax(20rem, 1fr))"
+            },
+
+
             colors: {
                 "clr-disabled-element": "var(--disabled-element-color)",
                 "clr-primary": "var(--primary-color)",

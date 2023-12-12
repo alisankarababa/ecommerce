@@ -165,9 +165,9 @@ export default function Home() {
                 <span className="block mb-[0.625rem] font-bold text-[0.875rem] text-clr-primary">Practice Advice</span>
                 <h2 className="mb-[0.625rem] font-bold text-clr-dark text-[2.5rem]">Featured Posts</h2>
                 <p className="max-w-[44%] mx-auto mb-[5rem] text-clr-second text-[0.875rem]">Problems trying to resolve the conflict between <br/>the two major realms of Classical physics: Newtonian mechanics </p>
-                <div className="flex justify-between gap-x-[0.625rem] ">
+                <div className="grid grid-cols-autofill-minmax20rem1fr gap-[0.5rem]">
                 {
-                    Array(3).fill(1).map( ( item, idx ) => <FeaturedPost key={idx} className="base-[348px]" urlImg={featuredPost1}/>)
+                    Array(3).fill(1).map( ( item, idx ) => <FeaturedPost key={idx} urlImg={featuredPost1}/>)
                 }
                 </div>
             </section>
