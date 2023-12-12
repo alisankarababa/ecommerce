@@ -6,9 +6,9 @@ export default function Header() {
 	return (
 		<header className="">
 
-            <div className="text-clr-light bg-bgclr-dark">
-                <nav className="container-big py-[1.5em] px-[1em] flex justify-between items-center">
-                    <div className="flex gap-[1.875rem]">
+            <div className="text-clr-light bg-bgclr-dark hidden lg:block">
+                <nav className="container-big py-[1.5em] px-[1em] flex flex-wrap justify-between items-center gap-[2rem]">
+                    <div className="flex items-center gap-[1.875rem]">
                         <IconWithText className="flex items-center gap-[0.3125rem]" classText="text-[0.875rem] font-bold" classIcon="fa-solid fa-phone" text="(225) 555-0118"/>
                         <IconWithText className="flex items-center gap-[0.3125rem]" classText="text-[0.875rem] font-bold" classIcon="fa-regular fa-envelope" text="michelle.rivera@example.com"/>
                     </div>
@@ -22,14 +22,18 @@ export default function Header() {
                     </span>
                 </nav>
             </div>
-			<div className="container-big px-[1em] py-[1.5em] flex gap-x-[2.5rem] items-center">
-				<Brand />
-				<nav className="grow flex justify-between">
-					<ul className="flex gap-5 text-clr-second">
+			<div className="container-big px-[1em] py-[1.5em]">
+				
+				<nav className="flex flex-wrap items-center justify-between gap-y-[2rem]">
+
+                    <div className="sm:mr-[5rem]">
+                        <Brand />
+                    </div>
+					<ul className="grow-0 lg:grow flex flex-col w-full order-1 sm:order-0 sm:w-auto sm:flex-row gap-5 text-clr-second">
 						<li>
 							<NavLink to="/home">Home</NavLink>
 						</li>
-						<li className="text-clr-dark">
+						<li className="text-clr-dark hidden sm:block">
 							<NavLink to="/shop">
 								Shop
 							</NavLink> {" "}
@@ -38,7 +42,7 @@ export default function Header() {
 						<li>
 							<NavLink to="/about">About</NavLink>
 						</li>
-						<li>
+						<li className="hidden sm:block">
 							<NavLink to="#">Blog</NavLink>
 						</li>
 						<li>
@@ -48,8 +52,8 @@ export default function Header() {
 							<NavLink to="#">Pages</NavLink>
 						</li>
 					</ul>
-					<ul className="text-clr-primary flex gap-x-[1.875rem]">
-						<li>
+					<ul className="sm:text-clr-primary flex gap-x-[1.875rem] order-0 sm:order-1">
+						<li className="hidden sm:block sm:w-auto">
                             <IconWithText classIcon="fa-regular fa-user" text=" Login "/>
 							/ <span>Register</span>
 						</li>
