@@ -6,6 +6,11 @@ module.exports = {
     theme: {
         
         extend: {
+            
+            screens: {
+                "xs": "440px"
+
+            },
 
             colors: {
                 "clr-disabled-element": "var(--disabled-element-color)",
