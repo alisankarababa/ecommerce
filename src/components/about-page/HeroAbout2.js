@@ -6,7 +6,7 @@ export default function HeroAbout2() {
         <div className="bg-bgclr-light">
             <div className="container-big">
                 <section className="flex flex-wrap">
-                    <div className="basis-[850px] bg-bgclr-hover flex justify-center items-center">
+                    <div className="basis-[20rem] grow-[5] bg-bgclr-hover flex justify-center items-center">
                         <div className="w-[54%] text-clr-light font-bold text-left flex flex-col items-start gap-[1.5rem] ">
                             <h5>WORK WITH US</h5>
                             <p className="text-[2.5rem]">Now Let’s grow Yours</p>
@@ -14,7 +14,7 @@ export default function HeroAbout2() {
                             <button className="self-start btn-light-outline-transparent rounded-[5px] text-[0.875rem] px-[2.5rem] py-[0.9375rem]">Button</button>
                         </div>
                     </div>
-                    <div className="basis-[590px] aspect-[590/640]">
+                    <div className="basis-[20rem] grow-[2] aspect-[590/640]">
                         <img className="w-full h-full object-cover" src={imgHero} alt="img"/>
                     </div>
                 </section>
