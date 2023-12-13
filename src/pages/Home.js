@@ -141,23 +141,22 @@ export default function Home() {
                 </Carousel>
             </section>
 
-            <section className="max-w-[1248px] m-auto">
-                <div className="flex gap-x-[2rem]">
-                    <div className="basis-[624px] grow-[9]">
-                        <img src={manWoman} alt="img"/>
+            <section className="container-medium m-auto">
+                <div className="md:grid md:grid-cols-2-9/8 md:gap-[1.875rem]">
+                    <div className="md:order-1 flex flex-col justify-center items-start">
+                        <div className="font-bold flex flex-col items-center md:items-start gap-y-[2.1875rem]">
+                                <span className="text-clr-muted">SUMMER 2020</span>
+                                <h2 className="text-[3.625rem] text-clr-dark md:text-left">Part of the Neural Universe</h2>
+                                <span className="text-[1.25rem] w-[70%] md:text-left font-normal text-clr-second">We know how large objects will act, but things on a small scale.</span>
+                                <div className="flex flex-col items-center md:flex-row md:flex-wrap gap-[0.625rem]">
+                                    <Link className="inline-block btn-md text-[0.875rem] btn-success" to="#">BUY NOW</Link>
+                                    <Link className="inline-block btn-md text-[0.875rem] btn-success-outline" to="#">READ MORE</Link>
+                                </div>
+                        </div>
                     </div>
-                    <div className="basis-[484px] grow-[7] flex flex-col justify-center items-start">
-                    <div className="font-bold flex flex-col items-start gap-y-[2.1875rem] justify-between">
-                            <span className="text-clr-muted">SUMMER 2020</span>
-                            <h2 className="text-[3.625rem] text-clr-dark text-left">Part of the Neural Universe</h2>
-                            <span className="text-[1.25rem] w-[70%] text-left font-normal text-clr-second">We know how large objects will act, but things on a small scale.</span>
-                            <div>
-                                <Link className="inline-block btn-md text-[0.875rem] btn-success mr-[0.625rem]" to="#">BUY NOW</Link>
-                                <Link className="inline-block btn-md text-[0.875rem] btn-success-outline" to="#">READ MORE</Link>
-                            </div>
+                    <div className="mt-[2rem] md:mt-0">
+                        <img className="w-full h-full object-cover" src={manWoman} alt="img"/>
                     </div>
-                    </div>
-
                 </div>
             </section>
 

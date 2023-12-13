@@ -13,7 +13,8 @@ module.exports = {
             },
 
             gridTemplateColumns: {
-                'autofill-minmax20rem1fr': "repeat(auto-fit, minmax(20rem, 1fr))"
+                'autofill-minmax20rem1fr': "repeat(auto-fit, minmax(20rem, 1fr))",
+                "2-9/8": "minmax(20rem, 9fr) minmax(20rem, 8fr)"
             },
 
 
