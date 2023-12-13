@@ -33,20 +33,21 @@ export default function Home() {
                 renderArrowNext={getCustomRenderArrowFunction(eArrow.next)}
                 renderIndicator={customRenderIndicatorFunction}
                 >
-                <div className="relative aspect-[2/1] text-clr-light">
-                    <img className="img-absolute" src={carouselImg} alt="img" />
-                    <div className="relative container-small z-10 top-[29%]">
-                        <div className="font-bold w-[60%] flex flex-col items-start gap-y-[2.1875rem]">
+                <div className="grid grid-cols-1 grid-rows-[45rem] text-clr-light">
+                    <img className="h-full row-span-full col-span-full object-cover object-center" src={carouselImg} alt="img" />
+                    <div className="row-span-full col-span-full flex items-center container-small w-full">
+                        <div className="font-bold flex flex-col items-center text-center xs:text-left xs:items-start gap-y-[2.1875rem]">
                             <span>SUMMER 2020</span>
-                            <h2 className="text-[3.625rem]">NEW COLLECTION</h2>
-                            <span className="text-[1.25rem] text-left font-normal w-[60%]">We know how large objects will act, but things on a small scale.</span>
+                            <h2 className="text-[2.5rem] xs:text-[3.625rem]">NEW COLLECTION</h2>
+                            <span className="text-[1.25rem] font-normal max-w-[25rem]">We know how large objects will act, but things on a small scale.</span>
                             <Link className="btn-md btn-success text-[1.25rem]" to="/shop">SHOP NOW</Link>
                         </div>
                     </div>
                 </div>
-                <div className="relative aspect-[2/1]">
-                    <img className="img-absolute" src={carouselImg} alt="img" />
+                <div className="relative h-[45rem] text-clr-light">
+                    <img className="h-full object-cover object-center" src={carouselImg} alt="img" />
                 </div>
+                
             </Carousel>
             </section>
 
