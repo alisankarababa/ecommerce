@@ -55,33 +55,35 @@ export default function Home() {
 
                 <h2 className="mb-[0.625rem] text-clr-dark text-[1.5rem] font-bold">EDITOR’S PICK</h2>
                 <p className="mb-[3rem] text-[0.875rem] text-clr-second">Problems trying to resolve the conflict between </p>
-				<div className="flex gap-x-[2rem] aspect-[2/1]">
-					<div className="basis-[539px]">
+				<div className="flex flex-wrap gap-[1.825rem]">
+					<div className="basis-[26rem] grow h-[31.25rem]">
 						<CategoryCard
 							className="w-full h-full"
 							urlImg={men}
 							textBtn={"MEN"}
 						/>
 					</div>
-					<div className="basis-[239px]">
-						<CategoryCard
-							className="w-full h-full"
-							urlImg={women}
-							textBtn={"WOMEN"}
-						/>
-					</div>
-					<div className="basis-[239px] flex flex-wrap gap-y-[1rem]">
-						<CategoryCard
-							className="basis-[239px]"
-							urlImg={accessory}
-							textBtn={"WOMEN"}
-						/>
-						<CategoryCard
-							className="grow basis-[239px]"
-							urlImg={kids}
-							textBtn={"KIDS"}
-						/>
-					</div>
+                    <div className="basis-[26rem] grow flex flex-wrap gap-[1.825rem]">
+					    <div className="basis-[12rem] grow h-[31.25rem]">
+					    	<CategoryCard
+					    		className="w-full h-full"
+					    		urlImg={women}
+					    		textBtn={"WOMEN"}
+					    	/>
+					    </div>
+					    <div className="basis-[12rem] grow flex flex-col gap-y-[1rem] h-[31.25rem]">
+					    	<CategoryCard
+					    		className="w-full h-[15rem]"
+					    		urlImg={accessory}
+					    		textBtn={"ACCESSORIES"}
+					    	/>
+					    	<CategoryCard
+					    		className="w-full h-[15rem]"
+					    		urlImg={kids}
+					    		textBtn={"KIDS"}
+					    	/>
+					    </div>
+                    </div>
 				</div>
 			</section>
 
