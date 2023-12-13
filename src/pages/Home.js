@@ -90,7 +90,7 @@ export default function Home() {
                 <h3 className="text-clr-dark font-bold text-[1.5rem] mb-[0.625rem]">BESTSELLER PRODUCTS</h3>
                 <p className="text-clr-second">Problems trying to resolve the conflict between </p>
 
-                <div className="py-[5rem] flex flex-wrap gap-y-[5rem] gap-x-[1.875rem]  justify-start">
+                <div className="py-[5rem] grid grid-cols-autofill-minmax14.75rem1fr gap-[1.875rem]">
 				{Array(8).fill(1).map((item, idx) => {
 					return <ProductCard key={idx} className="basis-[240px]" urlImg={product} />;
 				})}
