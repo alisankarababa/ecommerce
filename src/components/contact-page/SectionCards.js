@@ -5,7 +5,7 @@ export default function SectionCards() {
 <div className="bg-bgclr-light">
                 <div className="container-small">
                     <section className="font-bold py-[5em]">
-                        <div className="w-[55%] m-auto mb-[5rem]">
+                        <div className="max-w-[40rem] m-auto mb-[5rem]">
                             <h6 className="text-[0.875rem] text-clr-dark">VISIT OUR OFFICE</h6>
                             <h2 className="text-[2.5rem] text-clr-dark">We help small businesses with big ideas</h2>
                         </div>
