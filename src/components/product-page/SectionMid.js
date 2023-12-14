@@ -5,15 +5,15 @@ export default function SectionMid() {
 	return (
 		<div className="bg-bgclr-light">
 			<section className="container-small text-left">
-				<div className="py-[1.5rem] flex flex-wrap gap-[2rem]">
-					<div className="basis-[300px] grow">
+				<div className="py-[1.5rem] grid grid-cols-autofill-minmax20rem1fr gap-[2rem]">
+					<div>
 						<img
 							className="w-full aspect-[87/100] object-cover rounded-[5px] shadow-[0_35px_60px_-15px_rgba(196,196,196,0.2)]"
 							src={imgSecMid}
 							alt="img"
 						></img>
 					</div>
-					<div className="basis-[300px] grow">
+					<div>
 						<h5 className="mb-[2rem] font-bold text-[1.5rem] text-clr-dark ">
 							the quick fox jumps over
 						</h5>
@@ -33,7 +33,7 @@ export default function SectionMid() {
 							venial consequent sent nostrum met.
 						</p>
 					</div>
-					<div className="basis-[300px] grow">
+					<div>
 						<div className="mb-[1.5rem]">
 							<h5 className="mb-[2rem] font-bold text-[1.5rem] text-clr-dark">
 								the quick fox jumps over
