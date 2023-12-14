@@ -16,6 +16,7 @@ module.exports = {
                 'autofill-minmax20rem1fr': "repeat(auto-fit, minmax(20rem, 1fr))",
                 "autofill-minmax14.75rem1fr": "repeat(auto-fit, minmax(14.75rem, 1fr))",
                 "autofit-minmax9.125rem1fr": "repeat(auto-fit, minmax(9.125rem, 1fr))",
+                "autofit-minmax12.875rem1fr": "repeat(auto-fit, minmax(12.875rem, 1fr))",
                 "2-9/8": "minmax(20rem, 9fr) minmax(20rem, 8fr)"
             },
 
