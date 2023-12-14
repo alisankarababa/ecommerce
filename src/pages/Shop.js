@@ -28,8 +28,8 @@ export default function Shop() {
                 </div>
 
                 <div>
-				    <section className="container-big px-[12.25em]">    
-				    	<div className="text-clr-second flex items-center justify-between py-[1.5em]">
+				    <section className="container-small">
+				    	<div className="text-clr-second flex flex-col gap-y-[1.5rem] md:flex-row items-center md:justify-between py-[1.5em]">
 				    		<div className="text-[0.875rem] font-bold">
 				    			Showing all 12 results
 				    		</div>
@@ -51,7 +51,7 @@ export default function Shop() {
 				    			</button>
 				    		</div>
 				    	</div>
-				    	<div className="my-[3rem] flex flex-wrap gap-y-[5rem] gap-x-[1.875rem]">
+				    	<div className="my-[3rem] py-[5rem] grid grid-cols-autofill-minmax14.75rem1fr gap-x-[1.875rem] gap-y-[5rem]">
 				    		{Array(12)
 				    			.fill(1)
 				    			.map((item, idx) => {
