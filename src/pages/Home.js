@@ -95,7 +95,7 @@ export default function Home() {
 
                 <div className="py-[5rem] grid grid-cols-autofill-minmax14.75rem1fr gap-[1.875rem]">
 				{Array(8).fill(1).map((item, idx) => {
-					return <ProductCard key={idx} className="basis-[240px]" urlImg={product} />;
+					return <ProductCard key={idx} urlImg={product} />;
 				})}
                 </div>
 			</section>
@@ -109,37 +109,43 @@ export default function Home() {
                 renderArrowNext={getCustomRenderArrowFunction(eArrow.next)}
                 renderIndicator={customRenderIndicatorFunction}
             >
-                <div className="container-big bg-bgclr-secondary-1 text-clr-light aspect-[2/1] flex items-end">
-                    <div className="container-small max-h-[85%] flex flex-wrap justify-between gap-[1.875rem]">
-                        <div className="basis-[510px] grow pt-[3.75em] font-bold flex flex-col items-start gap-y-[1.875rem]">
-                            <span>SUMMER 2020</span>
-                            <h2 className="text-[3.625rem] text-left w-[70%]">Vita Classic Product</h2>
-                            <span className="text-[0.875rem] w-[67%] text-left font-normal">We know how large objects will act, We know how are objects will act, We know</span>
-                            <div>
-                                <span className="text-[1.5rem] mr-[2.125rem]" >$16.48</span>
-                                <Link className="btn-md btn-success inline-block text-[0.875rem]" to="#">ADD TO CART</Link>
+                <div className="container-big bg-bgclr-secondary-1 text-clr-light grid grid-cols-autofill-minmax20rem1fr grid-rows-[45rem] auto-rows-[30rem]">
+                        <div className="flex items-center justify-end">
+                            <div className="font-bold flex flex-col items-start gap-y-[2.1875rem] pt-[3.75rem]">
+                                <span>SUMMER 2020</span>
+                                <h2 className="max-w-[30rem] text-[3.625rem] text-left">Vita Classic Product</h2>
+                                <span className="text-[1.25rem] w-[70%] text-left font-normal">We know how large objects will act, but things on a small scale.</span>
+                                <div className="flex flex-wrap items-center">
+                                    <span className="text-[1.5rem] mr-[2.125rem]" >$16.48</span>
+                                    <Link className="btn-md bg-bgclr-success rounded-[5px]" to="#">ADD TO CART</Link>
+                                </div>
                             </div>
                         </div>
-                        <div className="basis-[510px] grow px-[2.1rem] relative">
-                            <img className="w-full h-full object-cover object-top" src={hero2} alt="img" />
+                        
+                        <div className="h-full w-full flex items-end justify-center">
+                            <div className="h-full w-full md:h-[80%] md:w-[60%]">
+                                <img className="h-full w-full object-cover object-top" src={hero2} alt="img" />
+                            </div>
                         </div>
-                    </div>
                 </div>
-                <div className="bg-bgclr-secondary-1 text-clr-light aspect-[2/1] flex">
-                    <div className="grow pt-[7rem] container-small flex justify-between gap-[1.875rem]">
-                        <div className="basis-[510px] grow shrink font-bold flex flex-col items-start gap-y-[2.1875rem]">
-                            <span>SUMMER 2020</span>
-                            <h2 className="text-[3.625rem] text-left">Vita Classic Product</h2>
-                            <span className="text-[1.25rem] w-[70%] text-left font-normal">We know how large objects will act, but things on a small scale.</span>
-                            <div>
-                                <span className="text-[1.5rem] mr-[2.125rem]" >$16.48</span>
-                                <Link className="btn-md bg-bgclr-success rounded-[5px]" to="#">ADD TO CART</Link>
+                <div className="container-big bg-bgclr-secondary-1 text-clr-light grid grid-cols-autofill-minmax20rem1fr grid-rows-[45rem] auto-rows-[30rem]">
+                        <div className="flex items-center justify-end">
+                            <div className="font-bold flex flex-col items-start gap-y-[2.1875rem] pt-[3.75rem]">
+                                <span>SUMMER 2020</span>
+                                <h2 className="max-w-[30rem] text-[3.625rem] text-left">Vita Classic Product</h2>
+                                <span className="text-[1.25rem] w-[70%] text-left font-normal">We know how large objects will act, but things on a small scale.</span>
+                                <div className="flex flex-wrap items-center">
+                                    <span className="text-[1.5rem] mr-[2.125rem]" >$16.48</span>
+                                    <Link className="btn-md bg-bgclr-success rounded-[5px]" to="#">ADD TO CART</Link>
+                                </div>
                             </div>
                         </div>
-                        <div className="basis-[510px] grow shrink">
-                            <img src={hero2} alt="img" />
+                        
+                        <div className="h-full w-full flex items-end justify-center">
+                            <div className="h-full w-full md:h-[80%] md:w-[60%]">
+                                <img className="h-full w-full object-cover object-top" src={hero2} alt="img" />
+                            </div>
                         </div>
-                    </div>
                 </div>
                 </Carousel>
             </section>

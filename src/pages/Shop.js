@@ -58,7 +58,6 @@ export default function Shop() {
 				    				return (
 				    					<ProductCard
 				    						key={idx}
-				    						className="basis-[200px]"
 				    						urlImg={product}
 				    					/>
 				    				);
