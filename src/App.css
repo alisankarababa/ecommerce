@@ -47,20 +47,20 @@
 }
 
 .container-common {
-    @apply my-0 mx-auto;
+    @apply my-0 mx-auto px-[1rem];
 }
 
 .container-small {
-    @apply container-common max-w-[1050px];
+    @apply container-common max-w-[1066px];
 }
 
 .container-medium {
-    @apply container-common max-w-[1200px];
+    @apply container-common max-w-[1216px];
 }
 
 
 .container-big {
-    @apply container-common max-w-[1440px];
+    @apply container-common max-w-[1456px];
 }
 
 .btn-md {

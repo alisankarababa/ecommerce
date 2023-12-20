@@ -4,7 +4,7 @@ export default function SectionOffer() {
 	return (
 		<div className="bg-bgclr-light">
 			<div className="container-small">
-				<div className="font-bold pb-[5em]">
+				<div className="font-bold py-[5em]">
 					<img className="m-auto mb-[1.25rem]" src={arrow} alt="icon" />
 					<h6 className="text-clr-dark mb-[1rem]">WE Can't WAIT TO MEET YOU</h6>
 					<h2 className="text-clr-dark mb-[1rem] text-[3.625rem]">

@@ -9,23 +9,23 @@ import { useLocation } from "react-router-dom/cjs/react-router-dom";
 
 function ClientLogos() {
 	return (
-		<div className="flex flex-wrap justify-between items-center gap-[2rem] py-[3.125em]">
-			<div className="flex flex-col items-center">
+		<div className="grid grid-cols-autofit-minmax9.125rem1fr gap-x-[1.875rem] gap-y-[3.75rem] py-[3.125em]">
+			<div className="flex items-center justify-center">
 				<img src={cl1} alt="client1" />
 			</div>
-			<div className="flex flex-col items-center">
+			<div className="flex items-center justify-center">
 				<img src={cl2} alt="client2" />
 			</div>
-			<div className="flex flex-col items-center">
+			<div className="flex items-center justify-center">
 				<img src={cl3} alt="client3" />
 			</div>
-			<div className="flex flex-col items-center">
+			<div className="flex items-center justify-center">
 				<img src={cl4} alt="client4" />
 			</div>
-			<div className="flex flex-col items-center">
+			<div className="flex items-center justify-center">
 				<img src={cl5} alt="client5" />
 			</div>
-			<div className="flex flex-col items-center">
+			<div className="flex items-center justify-center">
 				<img src={cl6} alt="client6" />
 			</div>
 		</div>

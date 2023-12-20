@@ -10,16 +10,16 @@ import {
 export default function SectionProductBestSeller() {
 	return (
 		<div className="bg-bgclr-ligth-gray-1">
-			<section className="container-small relative left-[2.5rem] py-[3rem] text-left font-bold ">
+			<section className="container-small py-[3rem] text-left font-bold ">
 
                 <h3 className="text-[1.5rem] text-clr-dark">BESTSELLER PRODUCTS</h3>
                 <hr className="my-[1.5rem] border-clr-light-gray-2"/>
-                <div className="flex flex-wrap gap-x-[1.875rem] gap-y-[1.5rem]">
+                <div className="grid grid-cols-autofill-minmax14.75rem1fr gap-x-[1.875rem] gap-y-[1.5rem]">
 				{Array(8)
 					.fill(1)
 					.map((item, idx) => {
 						return (
-							<Card key={idx} className="basis-[239px]">
+							<Card key={idx}>
 								<CardImg
 									className="w-full aspect-[85/100] object-cover"
 									urlImg={bestseller1}

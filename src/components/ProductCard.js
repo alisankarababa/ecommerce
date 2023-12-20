@@ -6,7 +6,7 @@ export default function ProductCard({ urlImg, className}) {
 
 	return (
 		<div className={className}>
-			<div className="relative w-full aspect-[56/100]">
+			<div className="relative w-full aspect-[21/26] sm:aspect-[56/100]">
 				<img className="img-absolute" src={urlImg} alt="img-product" />
 			</div>
 			<div className="flex flex-col grow gap-y-[0.625rem]">
