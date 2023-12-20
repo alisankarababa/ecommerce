@@ -6,11 +6,16 @@ import Product from "../pages/Product"
 import About from "../pages/About"
 import Team from "../pages/Team"
 import Contact from '../pages/Contact';
+import SignUp from '../pages/SignUp';
 
 export default function PageContent() {
 	return (
         
 		<Switch>
+
+            <Route path="/signup">
+                <SignUp />
+			</Route>
             <Route path="/contact">
                 <Contact />
 			</Route>
