@@ -98,3 +98,19 @@
 .pill-shape {
     @apply rounded-[50rem];
 }
+
+.input-group {
+    @apply flex flex-col mb-[1rem];
+}
+
+.input-label {
+    @apply text-left font-medium mb-[0.25rem];
+}
+
+.input-field {
+    @apply py-[0.25em] px-[0.5em] border-[1px] border-clr-dark rounded-[5px] mb-[1rem];
+}
+
+.input-error {
+    @apply text-left text-clr-danger;
+}
