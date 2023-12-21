@@ -2,7 +2,21 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 
-function SignUpCustomer() {
+function InputRHF({labelText, inputType, errors, inputKey, inputRegistration}) {
+
+    return (
+        <div className='input-group'>
+            <label className="input-label" htmlFor={inputKey}>{labelText}</label>
+            <input
+                className="input-field"
+                id={inputKey}
+                type={inputType}
+                {...inputRegistration}
+            />
+            {errors[inputKey] && <p role="alert" className='input-error'>{errors[inputKey]?.message}</p>}
+        </div>
+    );
+}
     const { register, handleSubmit, watch, formState: { errors, isValid } } = useForm({mode: "onBlur"});
     const onSubmit = data => console.log(data);
 
