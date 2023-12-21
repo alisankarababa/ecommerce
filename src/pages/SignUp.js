@@ -1,6 +1,7 @@
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import axios from 'axios';
 
 function InputRHF({labelText, inputType, errors, inputKey, inputRegistration}) {
 
@@ -131,10 +132,17 @@ function SingUpForm({roles}) {
                             <select
                                 className="input-field"
                                 id='role'
-                                {...register("role")}>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
+                                {...register("role")}
+                            >
+                                {
+                                    roles.map( role => {
+                                        
+                                        if( role.name.toLowerCase() === "müşteri")
+                                            return <option selected key={role.id}>{role.name}</option>
+
+                                        return <option key={role.id}>{role.name}</option>
+                                    })
+                                }
                             </select>
                             {errors.role && <p className='input-error'>{errors.role.message}</p>} 
                         </div>
@@ -149,8 +157,33 @@ function SingUpForm({roles}) {
 
 export default function SignUp() {
     
+    const instanceAxios = axios.create({
+        baseURL: 'https://workintech-fe-ecommerce.onrender.com',
+        timeout: 1000,
+    });
+
+    const [roles, setRoles] = useState([]);
+    
+    useEffect(()=>{
+        instanceAxios.get("/roles")
+        .then((response)=> {
+            console.log(response);
+            setRoles(response.data);
+        })
+        .catch((error)=> {
+            console.log(error);
+        })
+
+
+    }, []);
+
+    useEffect(()=> {
+
+        console.log("roles are:\n", roles);
+    }, [roles])
+
     return (
-        <SignUpCustomer />
+        <SingUpForm roles={roles}/>
     );
 
 }
