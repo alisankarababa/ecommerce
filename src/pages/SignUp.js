@@ -144,8 +144,100 @@ function SingUpForm({roles}) {
                                     })
                                 }
                             </select>
-                            {errors.role && <p className='input-error'>{errors.role.message}</p>} 
                         </div>
+
+                        {
+                            watch("role")?.toLowerCase() === "mağaza" &&
+                            
+                            (
+                                <>
+                                <InputRHF
+                                    labelText="Store Name"
+                                    inputKey="store_name"
+                                    inputType="text"
+                                    errors={errors}
+                                    inputRegistration={
+                                        register("store_name",
+                                        {
+                                            required: {
+                                                value: true,
+                                                message: "Store Name is required."
+                                            },
+                                            minLength: {
+                                                value: 3,
+                                                message: "Store Name should be at least 3 characters long."
+                                            },
+                                            maxLength: {
+                                                value: 30,
+                                                message: "Store Name cannot be longer than 30 characters."
+                                            }
+                                        })
+                                    }
+                                />
+
+                                <InputRHF
+                                    labelText="Store Phone"
+                                    inputKey="phone"
+                                    errors={errors}
+                                    inputType="tel"
+                                    inputRegistration={
+                                        register("phone",
+                                        {
+                                            required: {
+                                                value: true,
+                                                message: "Phone number is required"
+                                            },
+                                            pattern: {
+                                                value: /^((\+|00)90|0)?\s?5\d{2}\s?\d{3}\s?\d{2}\s?\d{2}$/,
+                                                message: "Invalid phone number"
+                                            }
+                                        })
+                                    }
+                                />
+
+                                <InputRHF
+                                    labelText="Store Tax Number"
+                                    inputKey="tax_no"
+                                    errors={errors}
+                                    inputType="text"
+                                    inputRegistration={
+                                        register("tax_no",
+                                        {
+                                            required: {
+                                                value: true,
+                                                message: "Store Tax Number is required."
+                                            },
+                                            pattern: {
+                                                value: /^T\d{4}V\d{6}$/,
+                                                message: "Invalid tax number"
+                                            }
+                                        })
+                                    }
+                                />
+
+                                <InputRHF
+                                    labelText="Store IBAN"
+                                    inputKey="iban"
+                                    errors={errors}
+                                    inputType="text"
+                                    inputRegistration={
+                                        register("iban",
+                                        {
+                                            required: {
+                                                value: true,
+                                                message: "Store IBAN is required."
+                                            },
+                                            pattern: {
+                                                value: /^TR\d{2}\s?(\d{4}\s?){1}(\d{1})(\d{3}\s?)(\d{4}\s?){3}(\d{2})\s?$/,
+                                                message: "Invalid IBAN"
+                                            }
+                                        })
+                                    }
+                                />
+
+                                </>
+                            )
+                        }
                     </div>
                     <input disabled={!isValid} className='btn btn-small-wide btn-primary disabled:opacity-50' type="submit" />
                 </form>
