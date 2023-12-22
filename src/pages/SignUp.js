@@ -20,16 +20,30 @@ function InputRHF({labelText, inputType, errors, inputKey, inputRegistration}) {
 }
 
 
-function SingUpForm({roles}) {
+function SingUpForm({roles, onSubmit}) {
     
     const { register, handleSubmit, watch, formState: { errors, isValid } } = useForm({mode: "onBlur"});
-    const onSubmit = data => console.log(data);
+
+    const [isSubmitInProgress, setIsSubmitInProgress] = useState(false);
+
+    if(roles.length === 0)
+        return <div>LOADING</div>
+
+    const defaultSelected = roles.find((role) => role.name === "Müşteri");
+    const storeSelectItem = roles.find(role => role.name === "Mağaza");
+
+    function submit(data) {
+        
+        onSubmit(data, setIsSubmitInProgress);
+
+    }
+
 
     return (
 
         <div className='bg-bgclr-light'>
             <div className='max-w-[400px] m-auto px-[1rem] py-[5rem] sm:py-[10rem]'>
-                <form className="m-auto" onSubmit={handleSubmit(onSubmit)}>
+                <form className="m-auto" onSubmit={handleSubmit(submit)}>
                     <div >
                         
                         <InputRHF
@@ -128,26 +142,23 @@ function SingUpForm({roles}) {
                         />
 
                         <div className='input-group'>
-                            <label className="input-label" htmlFor='role'>Role</label>
+                            <label className="input-label" htmlFor='role_id'>Role</label>
                             <select
                                 className="input-field"
-                                id='role'
-                                {...register("role")}
+                                id='role_id'
+                                defaultValue={defaultSelected.id}
+                                {...register("role_id")}
                             >
                                 {
                                     roles.map( role => {
-                                        
-                                        if( role.name.toLowerCase() === "müşteri")
-                                            return <option selected key={role.id}>{role.name}</option>
-
-                                        return <option key={role.id}>{role.name}</option>
+                                        return <option value={role.id} key={role.id}>{role.name}</option>
                                     })
                                 }
                             </select>
                         </div>
 
                         {
-                            watch("role")?.toLowerCase() === "mağaza" &&
+                            Number(watch("role_id")) === storeSelectItem.id &&
                             
                             (
                                 <>
@@ -217,11 +228,11 @@ function SingUpForm({roles}) {
 
                                 <InputRHF
                                     labelText="Store IBAN"
-                                    inputKey="iban"
+                                    inputKey="bank_account"
                                     errors={errors}
                                     inputType="text"
                                     inputRegistration={
-                                        register("iban",
+                                        register("bank_account",
                                         {
                                             required: {
                                                 value: true,
@@ -239,7 +250,13 @@ function SingUpForm({roles}) {
                             )
                         }
                     </div>
-                    <input disabled={!isValid} className='btn btn-small-wide btn-primary disabled:opacity-50' type="submit" />
+                    { !isSubmitInProgress && <input disabled={ !isValid } className='btn-small w-full btn-primary disabled:opacity-50 hover:cursor-pointer' type="submit" /> }
+                    { isSubmitInProgress &&
+                        <div className='btn-primary btn-small flex justify-center items-center'>
+                            <div className="w-5 h-5 rounded-full animate-spin border-2 border-solid border-white border-t-transparent"></div>
+                        </div>
+                    }
+                    
                 </form>
             </div>
         </div>
@@ -259,23 +276,60 @@ export default function SignUp() {
     useEffect(()=>{
         instanceAxios.get("/roles")
         .then((response)=> {
-            console.log(response);
             setRoles(response.data);
         })
         .catch((error)=> {
             console.log(error);
         })
 
-
     }, []);
 
-    useEffect(()=> {
+    function onSubmit(data, setIsSubmitInProgress) {
 
-        console.log("roles are:\n", roles);
-    }, [roles])
+        setIsSubmitInProgress(true);
+        const chosenRole = roles.find( role => {
+            return role.id === Number(data.role_id);
+        })
+
+        if(!chosenRole)
+            return;
+
+        let requestBody;
+
+        if(chosenRole.name === "Mağaza") {
+
+            requestBody = {};
+            requestBody.name = data.name;
+            requestBody.email = data.email;
+            requestBody.password = data.password;
+            requestBody.role_id = Number(data.role_id);
+
+            requestBody.store = {};
+            requestBody.store.name = data.store_name;
+            requestBody.store.phone = data.phone;
+            requestBody.store.tax_no = data.tax_no;
+            requestBody.store.bank_account = data.bank_account;
+        } else {
+            requestBody = {...data};
+            delete requestBody.confirm_password;
+        }
+
+        console.log(requestBody);
+
+        instanceAxios.post("/signup", requestBody)
+        .then((response)=> {
+            console.log(response);
+        })
+        .catch((error)=> {
+            console.log(error);
+        })
+        .finally(() => {
+            setIsSubmitInProgress(false);
+        })
+    }
 
     return (
-        <SingUpForm roles={roles}/>
+        <SingUpForm roles={roles} onSubmit={onSubmit}/>
     );
 
 }
