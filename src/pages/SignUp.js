@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 function InputRHF({labelText, inputType, errors, inputKey, inputRegistration}) {
 
@@ -314,17 +315,23 @@ export default function SignUp() {
             delete requestBody.confirm_password;
         }
 
-        console.log(requestBody);
-
         instanceAxios.post("/signup", requestBody)
         .then((response)=> {
             console.log(response);
+            setTimeout(()=> {
+                toast.success('Signed you up successfully!');
+            }, 1000)            
         })
         .catch((error)=> {
             console.log(error);
+            setTimeout(()=> {
+                toast.error('Signup failed.');
+            }, 1000)
         })
         .finally(() => {
-            setIsSubmitInProgress(false);
+            setTimeout(()=> {
+                setIsSubmitInProgress(false);
+            }, 1000)
         })
     }
 
