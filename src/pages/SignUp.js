@@ -6,8 +6,15 @@ import { toast } from 'react-toastify';
 
 function InputRHF({labelText, inputType, errors, inputKey, inputRegistration}) {
 
+    const errorMessage = getNestedValue(errors, inputKey)?.message;
+
+    function getNestedValue(obj, key) {
+        return key.split('.').reduce((acc, currentKey) => acc && acc[currentKey], obj);
+    }
+
     return (
         <div className='input-group'>
+
             <label className="input-label" htmlFor={inputKey}>{labelText}</label>
             <input
                 className="input-field"
@@ -15,7 +22,7 @@ function InputRHF({labelText, inputType, errors, inputKey, inputRegistration}) {
                 type={inputType}
                 {...inputRegistration}
             />
-            {errors[inputKey] && <p role="alert" className='input-error'>{errors[inputKey]?.message}</p>}
+            {errorMessage && <p role="alert" className='input-error'>{errorMessage}</p>}
         </div>
     );
 }
@@ -23,7 +30,7 @@ function InputRHF({labelText, inputType, errors, inputKey, inputRegistration}) {
 
 function SingUpForm({roles, onSubmit}) {
     
-    const { register, handleSubmit, watch, formState: { errors, isValid } } = useForm({mode: "onBlur"});
+    const { register, handleSubmit, watch, formState: { errors, isValid } } = useForm({mode: "onBlur", shouldUnregister: true});
 
     const [isSubmitInProgress, setIsSubmitInProgress] = useState(false);
 
