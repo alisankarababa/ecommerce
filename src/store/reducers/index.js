@@ -5,4 +5,5 @@ import reducerGlobal from './reducerGlobal';
 
 export const reducers = combineReducers({
     reducerGlobal,
+    reducerUser,
 })
