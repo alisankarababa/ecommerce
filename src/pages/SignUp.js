@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { useHistory } from "react-router-dom"
 
 function InputRHF({labelText, inputType, errors, inputKey, inputRegistration}) {
 
@@ -160,7 +161,7 @@ function SingUpForm({roles, onSubmit}) {
                             <select
                                 className="input-field"
                                 id='role_id'
-                                defaultValue={defaultSelected.id}
+                                defaultValue={defaultSelected?.id}
                                 {...register("role_id")}
                             >
                                 {
@@ -172,7 +173,7 @@ function SingUpForm({roles, onSubmit}) {
                         </div>
 
                         {
-                            Number(watch("role_id")) === storeSelectItem.id &&
+                            Number(watch("role_id")) === storeSelectItem?.id &&
                             
                             (
                                 <>
@@ -286,6 +287,7 @@ export default function SignUp() {
     });
 
     const [roles, setRoles] = useState([]);
+    const history = useHistory();
     
     useEffect(()=>{
         instanceAxios.get("/roles")
@@ -300,58 +302,29 @@ export default function SignUp() {
 
     function onSubmit(data, setIsSubmitInProgress) {
 
+        const requestBody = {...data};
+        delete requestBody.confirm_password;
+
         setIsSubmitInProgress(true);
-        const chosenRole = roles.find( role => {
-            return role.id === Number(data.role_id);
-        })
-
-        if(!chosenRole)
-            return;
-
-        let requestBody;
-
-        if(chosenRole.name === "Mağaza") {
-
-            requestBody = {};
-            requestBody.name = data.name;
-            requestBody.email = data.email;
-            requestBody.password = data.password;
-            requestBody.role_id = Number(data.role_id);
-
-            requestBody.store = {};
-            requestBody.store.name = data.store_name;
-            requestBody.store.phone = data.phone;
-            requestBody.store.tax_no = data.tax_no;
-            requestBody.store.bank_account = data.bank_account;
-        } else {
-            requestBody = {...data};
-            delete requestBody.confirm_password;
-        }
-
         instanceAxios.post("/signup", requestBody)
         .then((response)=> {
             console.log(response);
-            setTimeout(()=> {
-                toast.success('Signed you up successfully!');
-            }, 1000)            
+                toast.success("Click the link sent to your email address to activate your account!");
+                history.goBack();
         })
         .catch((error)=> {
             console.log(error);
-            setTimeout(()=> {
-                toast.error('Signup failed.');
-            }, 1000)
+                toast.error('Signup failed!')
+
         })
         .finally(() => {
-            setTimeout(()=> {
                 setIsSubmitInProgress(false);
-            }, 1000)
         })
     }
 
     return (
         <SingUpForm roles={roles} onSubmit={onSubmit}/>
     );
-
 }
 
 
