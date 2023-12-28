@@ -34,8 +34,14 @@ function SingUpForm({roles, onSubmit}) {
 
     const [isSubmitInProgress, setIsSubmitInProgress] = useState(false);
 
-    if(roles.length === 0)
-        return <div>LOADING</div>
+    if(roles.length === 0) {
+        
+        return (
+            <div className='py-[5rem] flex justify-center items-center'>
+                <div className="w-10 h-10 rounded-full animate-spin border-4 border-solid border-clr-primary border-t-transparent"></div>
+            </div>
+        );
+    }
 
     const defaultSelected = roles.find((role) => role.name === "Müşteri");
     const storeSelectItem = roles.find(role => role.name === "Mağaza");
