@@ -178,11 +178,11 @@ function SingUpForm({roles, onSubmit}) {
                                 <>
                                 <InputRHF
                                     labelText="Store Name"
-                                    inputKey="store_name"
+                                    inputKey="store.name"
                                     inputType="text"
                                     errors={errors}
                                     inputRegistration={
-                                        register("store_name",
+                                        register("store.name",
                                         {
                                             required: {
                                                 value: true,
@@ -202,11 +202,11 @@ function SingUpForm({roles, onSubmit}) {
 
                                 <InputRHF
                                     labelText="Store Phone"
-                                    inputKey="phone"
+                                    inputKey="store.phone"
                                     errors={errors}
                                     inputType="tel"
                                     inputRegistration={
-                                        register("phone",
+                                        register("store.phone",
                                         {
                                             required: {
                                                 value: true,
@@ -222,11 +222,11 @@ function SingUpForm({roles, onSubmit}) {
 
                                 <InputRHF
                                     labelText="Store Tax Number"
-                                    inputKey="tax_no"
+                                    inputKey="store.tax_no"
                                     errors={errors}
                                     inputType="text"
                                     inputRegistration={
-                                        register("tax_no",
+                                        register("store.tax_no",
                                         {
                                             required: {
                                                 value: true,
@@ -242,11 +242,11 @@ function SingUpForm({roles, onSubmit}) {
 
                                 <InputRHF
                                     labelText="Store IBAN"
-                                    inputKey="bank_account"
+                                    inputKey="store.bank_account"
                                     errors={errors}
                                     inputType="text"
                                     inputRegistration={
-                                        register("bank_account",
+                                        register("store.bank_account",
                                         {
                                             required: {
                                                 value: true,
