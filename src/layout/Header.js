@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom/cjs/react-router-dom";
+import { NavLink, Link } from "react-router-dom/cjs/react-router-dom";
 import Brand from "../components/Brand";
 import IconWithText from "../components/IconWithText";
 
@@ -55,7 +55,7 @@ export default function Header() {
 					<ul className="sm:text-clr-primary flex gap-x-[1.875rem] order-0 sm:order-1">
 						<li className="hidden sm:block sm:w-auto">
                             <IconWithText classIcon="fa-regular fa-user" text=" Login "/>
-							/ <span>Register</span>
+							/ <Link to="/signup">Register</Link>
 						</li>
 						<li>
 							<i className="fa-solid fa-magnifying-glass"></i>
