@@ -1,9 +1,11 @@
 
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import axios from 'axios';
 import { toast } from 'react-toastify';
 import { useHistory } from "react-router-dom"
+import { useDispatch, useSelector } from 'react-redux';
+import { actionCreatorGlobalFetchRoles } from '../store/actions/actionsGlobal';
+import { api } from '../api/api';
 
 function InputRHF({labelText, inputType, errors, inputKey, inputRegistration}) {
 
@@ -48,9 +50,7 @@ function SingUpForm({roles, onSubmit}) {
     const storeSelectItem = roles.find(role => role.name === "Mağaza");
 
     function submit(data) {
-        
         onSubmit(data, setIsSubmitInProgress);
-
     }
 
 
@@ -281,23 +281,14 @@ function SingUpForm({roles, onSubmit}) {
 
 export default function SignUp() {
     
-    const instanceAxios = axios.create({
-        baseURL: 'https://workintech-fe-ecommerce.onrender.com',
-        timeout: 1000,
-    });
-
-    const [roles, setRoles] = useState([]);
+    const roles = useSelector( store => store.reducerGlobal.roles );
+    
     const history = useHistory();
+    const dispatch = useDispatch();
     
     useEffect(()=>{
-        instanceAxios.get("/roles")
-        .then((response)=> {
-            setRoles(response.data);
-        })
-        .catch((error)=> {
-            console.log(error);
-        })
-
+        if(roles.length === 0)
+            dispatch(actionCreatorGlobalFetchRoles());
     }, []);
 
     function onSubmit(data, setIsSubmitInProgress) {
@@ -306,7 +297,7 @@ export default function SignUp() {
         delete requestBody.confirm_password;
 
         setIsSubmitInProgress(true);
-        instanceAxios.post("/signup", requestBody)
+        api.post("/signup", requestBody)
         .then((response)=> {
             console.log(response);
                 toast.success("Click the link sent to your email address to activate your account!");
@@ -315,7 +306,6 @@ export default function SignUp() {
         .catch((error)=> {
             console.log(error);
                 toast.error('Signup failed!')
-
         })
         .finally(() => {
                 setIsSubmitInProgress(false);
