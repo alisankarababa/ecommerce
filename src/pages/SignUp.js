@@ -74,12 +74,8 @@ function SingUpForm({roles, onSubmit}) {
                                         value: true,
                                         message: "Email is required."
                                     },
-                                    minLength: {
-                                        value: 15,
-                                        message: "Email must be at least 15 characters long."
-                                    },
                                     maxLength: {
-                                        value: 100,
+                                        value: 80,
                                         message: "Email cannot be longer than 100 characters."
                                     },
                                     pattern: {
