@@ -6,30 +6,7 @@ import { useHistory } from "react-router-dom"
 import { useDispatch, useSelector } from 'react-redux';
 import { actionCreatorGlobalFetchRoles } from '../store/actions/actionsGlobal';
 import { api } from '../api/api';
-
-function InputRHF({labelText, inputType, errors, inputKey, inputRegistration}) {
-
-    const errorMessage = getNestedValue(errors, inputKey)?.message;
-
-    function getNestedValue(obj, key) {
-        return key.split('.').reduce((acc, currentKey) => acc && acc[currentKey], obj);
-    }
-
-    return (
-        <div className='input-group'>
-
-            <label className="input-label" htmlFor={inputKey}>{labelText}</label>
-            <input
-                className="input-field"
-                id={inputKey}
-                type={inputType}
-                {...inputRegistration}
-            />
-            {errorMessage && <p role="alert" className='input-error'>{errorMessage}</p>}
-        </div>
-    );
-}
-
+import InputRHF from '../components/InputRHF';
 
 function SingUpForm({roles, onSubmit}) {
     
