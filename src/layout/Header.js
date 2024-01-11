@@ -2,7 +2,7 @@ import { NavLink, Link } from "react-router-dom/cjs/react-router-dom";
 import Brand from "../components/Brand";
 import IconWithText from "../components/IconWithText";
 import { useSelector } from "react-redux";
-import { getGravatarImageUrl } from "../utils/GravatarUrl";
+import md5 from "md5";
 
 export default function Header() {
 
@@ -63,7 +63,9 @@ export default function Header() {
                             {
                                 loggedInUser ? (
                                     <div className="flex items-center gap-2">
-                                        <img className="h-[40px] w-[40px] rounded-full" src={getGravatarImageUrl(loggedInUser.email)} alt="img" />
+                                        <img className="h-[30px] w-[30px] rounded-full" 
+                                            src={"https://secure.gravatar.com/avatar/" + md5(loggedInUser.email.toLowerCase().trim())}
+                                            alt="img" />
                                         <span className="text-clr-dark">{loggedInUser.name}</span>
                                     </div>
                                 ) : (
