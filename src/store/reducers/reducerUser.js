@@ -3,7 +3,6 @@ export const keyToken = "token";
 
 const initialState = {
     loggedInUser: null,
-    [keyToken]: null,
     errorLoggingIn: null,
     isLoggingInInProgress: false,
 }
