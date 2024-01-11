@@ -1,7 +1,12 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
+import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { actionCreatorUserLogin } from "../store/actions/actionsUser";
 import InputRHF from "../components/InputRHF";
+import { useLocalStorage } from "../hooks/useLocalStorage";
+
 function LoginForm({ onSubmit }) {
 	const {
 		register,
@@ -68,5 +73,39 @@ function LoginForm({ onSubmit }) {
 		</div>
 	);
 }
+
 export default function Login() {
+
+    const history = useHistory();
+    const dispatch = useDispatch();
+    const tokenFromStore = useSelector(store => store.reducerUser.token);
+    
+    const [token, updateToken] = useLocalStorage("token", tokenFromStore);
+
+    function onSubmit(data) {
+
+        const requestBody = {...data};
+        delete requestBody.confirm_password;
+
+        function isLoginSuccessFullCallBack(isLoginSuccessFull) {
+            
+            console.log(isLoginSuccessFull);
+
+            if(isLoginSuccessFull) {
+                updateToken(tokenFromStore);
+                toast.success("Login succesfull!");
+                history.push("/home");
+            }
+
+            else
+                toast.error("Login failed!")
+        }
+
+        dispatch(actionCreatorUserLogin(requestBody, isLoginSuccessFullCallBack));
+    }
+
+    return (
+        <LoginForm onSubmit={onSubmit}/>
+    );
+
 }
