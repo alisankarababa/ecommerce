@@ -1,27 +1,42 @@
 import './App.css';
 
-
 import Header from './layout/Header';
 import Footer from './layout/Footer';
 import PageContent from './layout/PageContent';
 import { useLocalStorage } from './hooks/useLocalStorage';
 import { keyToken } from './store/reducers/reducerUser';
 import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { actionCreatorAutoLogin } from './store/actions/actionsUser';
+import { api } from './api/api';
 
 function App() {
     
-    const tokenFromStore = useSelector(store => store.reducerUser.token);
+    const dispatch = useDispatch();
 
-    const [token, updateToken] = useLocalStorage(keyToken, tokenFromStore);
+    const loggedInUser = useSelector(store => store.reducerUser.loggedInUser);
+
+    const [token, updateToken] = useLocalStorage(keyToken, null);
 
     useEffect(() => {
 
-        if(tokenFromStore)
-            updateToken(tokenFromStore);
+        if(loggedInUser) {
+            updateToken(loggedInUser.token);
+            api.defaults.headers.common['Authorization'] = loggedInUser.token;
+        } else {
+            delete api.defaults.headers.common['Authorization'];
+        }
 
-    }, [tokenFromStore, updateToken])
+    }, [loggedInUser, updateToken])
 
+    useEffect(() => {
+
+        if( token ) {
+            api.defaults.headers.common['Authorization'] = token;
+            dispatch(actionCreatorAutoLogin())
+        }
+
+    }, [])
     
   return (
 		<div className="App font-fnt-mont">
