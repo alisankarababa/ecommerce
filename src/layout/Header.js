@@ -1,8 +1,13 @@
 import { NavLink, Link } from "react-router-dom/cjs/react-router-dom";
 import Brand from "../components/Brand";
 import IconWithText from "../components/IconWithText";
+import { useSelector } from "react-redux";
+import md5 from "md5";
 
 export default function Header() {
+
+    const loggedInUser = useSelector(store => store.reducerUser.loggedInUser);
+
 	return (
 		<header className="">
 
@@ -24,16 +29,16 @@ export default function Header() {
             </div>
 			<div className="container-big px-[1em] py-[1.5em]">
 				
-				<nav className="flex flex-wrap items-center justify-between gap-y-[2rem]">
+				<nav className="flex flex-col md:flex-row md:flex-wrap items-center md:justify-between  gap-x-[2rem] gap-y-[2rem]">
 
-                    <div className="sm:mr-[5rem]">
+                    <div className="mr-0 md:mr-[5rem]">
                         <Brand />
                     </div>
-					<ul className="grow-0 lg:grow flex flex-col w-full order-1 sm:order-0 sm:w-auto sm:flex-row gap-5 text-clr-second">
+					<ul className="grow-0 lg:grow flex flex-col w-full order-1 md:order-0 sm:w-auto md:flex-row gap-5 text-clr-second">
 						<li>
 							<NavLink to="/home">Home</NavLink>
 						</li>
-						<li className="text-clr-dark hidden sm:block">
+						<li className="text-clr-dark">
 							<NavLink to="/shop">
 								Shop
 							</NavLink> {" "}
@@ -42,7 +47,7 @@ export default function Header() {
 						<li>
 							<NavLink to="/about">About</NavLink>
 						</li>
-						<li className="hidden sm:block">
+						<li>
 							<NavLink to="#">Blog</NavLink>
 						</li>
 						<li>
@@ -52,10 +57,26 @@ export default function Header() {
 							<NavLink to="#">Pages</NavLink>
 						</li>
 					</ul>
-					<ul className="sm:text-clr-primary flex gap-x-[1.875rem] order-0 sm:order-1">
-						<li className="hidden sm:block sm:w-auto">
-                            <IconWithText classIcon="fa-regular fa-user" text=" Login "/>
-							/ <Link to="/signup">Register</Link>
+					<ul className="md:ml-auto sm:text-clr-primary flex gap-x-[1.875rem] order-0 md:order-1 items-center">
+						<li className="">
+
+                            {
+                                loggedInUser ? (
+                                    <div className="flex items-center gap-2">
+                                        <img className="h-[30px] w-[30px] rounded-full" 
+                                            src={"https://secure.gravatar.com/avatar/" + md5(loggedInUser.email.toLowerCase().trim())}
+                                            alt="img" />
+                                        <span className="text-clr-dark">{loggedInUser.name}</span>
+                                    </div>
+                                ) : (
+                                    <>
+                                        <IconWithText classIcon="fa-regular fa-user" text=""/>
+                                        <Link to="/login"> Login </Link>
+                                        /<Link to="/signup"> Register</Link>
+                                    </>
+                                )
+                            }
+
 						</li>
 						<li>
 							<i className="fa-solid fa-magnifying-glass"></i>

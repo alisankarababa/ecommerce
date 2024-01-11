@@ -7,12 +7,15 @@ import About from "../pages/About"
 import Team from "../pages/Team"
 import Contact from '../pages/Contact';
 import SignUp from '../pages/SignUp';
+import Login from '../pages/Login';
 
 export default function PageContent() {
 	return (
         
 		<Switch>
-
+            <Route path="/login">
+                <Login />
+			</Route>
             <Route path="/signup">
                 <SignUp />
 			</Route>
