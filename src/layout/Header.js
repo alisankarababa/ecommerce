@@ -1,8 +1,13 @@
 import { NavLink, Link } from "react-router-dom/cjs/react-router-dom";
 import Brand from "../components/Brand";
 import IconWithText from "../components/IconWithText";
+import { useSelector } from "react-redux";
+import { getGravatarImageUrl } from "../utils/GravatarUrl";
 
 export default function Header() {
+
+    const loggedInUser = useSelector(store => store.reducerUser.loggedInUser);
+
 	return (
 		<header className="">
 
@@ -52,10 +57,23 @@ export default function Header() {
 							<NavLink to="#">Pages</NavLink>
 						</li>
 					</ul>
-					<ul className="sm:text-clr-primary flex gap-x-[1.875rem] order-0 sm:order-1">
-						<li className="hidden sm:block sm:w-auto">
-                            <IconWithText classIcon="fa-regular fa-user" text=" Login "/>
-							/ <Link to="/signup">Register</Link>
+						<li className="">
+
+                            {
+                                loggedInUser ? (
+                                    <div className="flex items-center gap-2">
+                                        <img className="h-[40px] w-[40px] rounded-full" src={getGravatarImageUrl(loggedInUser.email)} alt="img" />
+                                        <span className="text-clr-dark">{loggedInUser.name}</span>
+                                    </div>
+                                ) : (
+                                    <>
+                                        <IconWithText classIcon="fa-regular fa-user" text=""/>
+                                        <Link to="/login"> Login </Link>
+                                        /<Link to="/signup"> Register</Link>
+                                    </>
+                                )
+                            }
+
 						</li>
 						<li>
 							<i className="fa-solid fa-magnifying-glass"></i>
