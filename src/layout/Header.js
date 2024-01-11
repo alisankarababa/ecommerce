@@ -29,16 +29,16 @@ export default function Header() {
             </div>
 			<div className="container-big px-[1em] py-[1.5em]">
 				
-				<nav className="flex flex-wrap items-center justify-between gap-y-[2rem]">
+				<nav className="flex flex-col md:flex-row md:flex-wrap items-center md:justify-between  gap-x-[2rem] gap-y-[2rem]">
 
-                    <div className="sm:mr-[5rem]">
+                    <div className="mr-0 md:mr-[5rem]">
                         <Brand />
                     </div>
-					<ul className="grow-0 lg:grow flex flex-col w-full order-1 sm:order-0 sm:w-auto sm:flex-row gap-5 text-clr-second">
+					<ul className="grow-0 lg:grow flex flex-col w-full order-1 md:order-0 sm:w-auto md:flex-row gap-5 text-clr-second">
 						<li>
 							<NavLink to="/home">Home</NavLink>
 						</li>
-						<li className="text-clr-dark hidden sm:block">
+						<li className="text-clr-dark">
 							<NavLink to="/shop">
 								Shop
 							</NavLink> {" "}
@@ -47,7 +47,7 @@ export default function Header() {
 						<li>
 							<NavLink to="/about">About</NavLink>
 						</li>
-						<li className="hidden sm:block">
+						<li>
 							<NavLink to="#">Blog</NavLink>
 						</li>
 						<li>
@@ -57,6 +57,7 @@ export default function Header() {
 							<NavLink to="#">Pages</NavLink>
 						</li>
 					</ul>
+					<ul className="md:ml-auto sm:text-clr-primary flex gap-x-[1.875rem] order-0 md:order-1 items-center">
 						<li className="">
 
                             {
