@@ -1,9 +1,9 @@
 import {eActionsUser} from "../actions/actionsUser"
-
+export const keyToken = "token";
 
 const initialState = {
     loggedInUser: null,
-    token: null,
+    [keyToken]: null,
     errorLoggingIn: null,
     isLoggingInInProgress: false,
 }
@@ -22,6 +22,9 @@ export default function reducerUser(state=initialState, action) {
 
         case eActionsUser.LOGIN_REQUEST_ENDED:
             return { ...state, isLoggingInInProgress: false };
+
+        case eActionsUser.AUTOLOGIN_SENDING_REQUEST:
+            return { ...state, isLoggingInInProgress: true };
 
         default:
             return state;

@@ -5,7 +5,6 @@ import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { actionCreatorUserLogin } from "../store/actions/actionsUser";
 import InputRHF from "../components/InputRHF";
-import { useLocalStorage } from "../hooks/useLocalStorage";
 
 function LoginForm({ onSubmit }) {
 	const {
@@ -78,10 +77,7 @@ export default function Login() {
 
     const history = useHistory();
     const dispatch = useDispatch();
-    const tokenFromStore = useSelector(store => store.reducerUser.token);
     
-    const [token, updateToken] = useLocalStorage("token", tokenFromStore);
-
     function onSubmit(data) {
 
         const requestBody = {...data};
@@ -89,10 +85,7 @@ export default function Login() {
 
         function isLoginSuccessFullCallBack(isLoginSuccessFull) {
             
-            console.log(isLoginSuccessFull);
-
             if(isLoginSuccessFull) {
-                updateToken(tokenFromStore);
                 toast.success("Login succesfull!");
                 history.push("/home");
             }
