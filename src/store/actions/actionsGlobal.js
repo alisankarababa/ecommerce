@@ -73,7 +73,7 @@ export function actionCreatorGlobalFetchCategories() {
         
         dispatch(actionCreatorGlobalFetchingCategories());
 
-        api.get("/categorie")
+        api.get("/categories")
         .then((response) => {
             dispatch(actionCreatorGlobalFetchedCategoriesSuccessfully(response.data));
         })

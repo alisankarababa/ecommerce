@@ -5,8 +5,23 @@ import ShopCard from "../components/ShopCard";
 import product from "../assets/product/example-product.jpeg"
 import imgShopCard1 from "../assets/Shop/shopCard1.jpeg";
 import Path from "../components/Path";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { actionCreatorGlobalFetchCategories } from "../store/actions/actionsGlobal";
 
 export default function Shop() {
+
+    const categories = useSelector( store => store.reducerGlobal.categories );
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        
+        dispatch(actionCreatorGlobalFetchCategories());
+
+    }, [])
+
+
 
     return (
 			<>
