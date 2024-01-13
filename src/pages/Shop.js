@@ -3,11 +3,11 @@ import ProductCard from "../components/ProductCard";
 import ShopCard from "../components/ShopCard";
 
 import product from "../assets/product/example-product.jpeg"
-import imgShopCard1 from "../assets/Shop/shopCard1.jpeg";
 import Path from "../components/Path";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { actionCreatorGlobalFetchCategories } from "../store/actions/actionsGlobal";
+import { Link } from "react-router-dom/cjs/react-router-dom";
 
 export default function Shop() {
 
@@ -20,8 +20,6 @@ export default function Shop() {
         dispatch(actionCreatorGlobalFetchCategories());
 
     }, [])
-
-
 
     return (
 			<>
@@ -38,12 +36,15 @@ export default function Shop() {
                             categories.sort( (a, b) => b.rating - a.rating )
                                         .slice(0, 5)
                                         .map(category => 
-                                            <ShopCard 
+                                            <Link to={`/shop/${category.gender === "e" ? "erkek" : "kadın"}/${category.title.toLowerCase()}`}>
+                                            <ShopCard
                                                 className="aspect-[8/9]" 
                                                 key={category.id} 
                                                 urlImg={category.img} 
                                                 text={category.gender === "e" ? "ERKEK" : "KADIN"} 
-                                                title={category.title} />)
+                                                title={category.title} 
+                                            />
+                                            </Link>)
                         }
                     </div>
 

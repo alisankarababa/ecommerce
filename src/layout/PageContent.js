@@ -10,9 +10,16 @@ import SignUp from '../pages/SignUp';
 import Login from '../pages/Login';
 
 export default function PageContent() {
-	return (
+	
+    
+    
+    return (
         
 		<Switch>
+            <Route exact path="/shop/:gender/:category">
+                <Shop />
+            </Route>
+
             <Route path="/login">
                 <Login />
 			</Route>
