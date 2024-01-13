@@ -35,7 +35,15 @@ export default function Shop() {
 
                     <div className="grid grid-cols-autofit-minmax12.875rem1fr gap-[0.9375rem]">
                         {
-                            Array(5).fill(1).map((item, idx) => <ShopCard className="aspect-[8/9]" key={idx} urlImg={imgShopCard1} title="CLOTHS" text="5 Items" />)
+                            categories.sort( (a, b) => b.rating - a.rating )
+                                        .slice(0, 5)
+                                        .map(category => 
+                                            <ShopCard 
+                                                className="aspect-[8/9]" 
+                                                key={category.id} 
+                                                urlImg={category.img} 
+                                                text={category.gender === "e" ? "ERKEK" : "KADIN"} 
+                                                title={category.title} />)
                         }
                     </div>
 
