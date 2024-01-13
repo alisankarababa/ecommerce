@@ -7,6 +7,8 @@ const initialState = {
     language: "",
     errorRoles: "",
     areRolesLoading: false,
+    errorCategories: null,
+    areCategoriesLoading: false,
 }
 
 export default function reducerGlobal(state=initialState, action) {
@@ -41,6 +43,22 @@ export default function reducerGlobal(state=initialState, action) {
 
             return { ...state, areRolesLoading: false };
         
+        case eActionsGlobal.FETCHING_CATEGORIES:
+
+            return { ...state, errorCategories: null, areCategoriesLoading: true};;
+        
+        case eActionsGlobal.FETCHED_CATEGORIES_SUCCESSFUL:
+
+            return { ...state, categories: action.payload };
+
+        case eActionsGlobal.FETCHING_CATEGORIES_FAILED:
+
+            return { ...state, errorCategories: action.payload };
+
+        case eActionsGlobal.FETCHING_CATEGORIES_ENDED:
+
+            return { ...state, areCategoriesLoading: false };
+
         default:
             return state;
     }

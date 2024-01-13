@@ -5,6 +5,8 @@ export const eActionsUser = Object.freeze({
     LOGIN_REQUEST_SUCCESSFUL: "actionsUser/ logged in successfully",
     LOGIN_REQUEST_FAILED: "actionsUser/ login failed",
     LOGIN_REQUEST_ENDED: "actionsUser/ login request finalized",
+    
+    AUTOLOGIN_SENDING_REQUEST: "actionsUser/ auto login request in progress",
 });
 
 export function  actionCreatorUserLogin(loginRequestBody, isLoginSuccessFullCallBack) {
@@ -42,4 +44,27 @@ function actionCreatorLoginFailed(error) {
 
 function actionCreatorLoginEnded() {
     return { type: eActionsUser.LOGIN_REQUEST_ENDED }
+}
+
+export function actionCreatorAutoLogin() {
+
+    return function funcThunk(dispatch) {
+
+        dispatch(actionCreatorAutoLoginStart());
+
+        api.get("/verify")
+        .then(( response ) => {
+            dispatch(actionCreatorLoginSuccess(response.data));
+        })
+        .catch(( error ) => {
+            dispatch(actionCreatorLoginFailed(error.message));
+        })
+        .finally(( ) => {
+            dispatch(actionCreatorLoginEnded());
+        })
+    }
+}
+
+function actionCreatorAutoLoginStart() {
+    return { type: eActionsUser.AUTOLOGIN_SENDING_REQUEST };
 }
