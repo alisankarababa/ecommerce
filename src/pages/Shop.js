@@ -4,22 +4,13 @@ import ShopCard from "../components/ShopCard";
 
 import product from "../assets/product/example-product.jpeg"
 import Path from "../components/Path";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { actionCreatorGlobalFetchCategories } from "../store/actions/actionsGlobal";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom/cjs/react-router-dom";
 
 export default function Shop() {
 
     const categories = useSelector( store => store.reducerGlobal.categories );
 
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        
-        dispatch(actionCreatorGlobalFetchCategories());
-
-    }, [])
 
     return (
 			<>
