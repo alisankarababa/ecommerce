@@ -8,13 +8,17 @@ export const eActionsProduct = Object.freeze({
 });
 
 
-export function actionCreatorFetchProducts() {
+export function actionCreatorFetchProducts(categoryId) {
 
     return function thunkFunc(dispatch) {
 
         dispatch(actionCreatorFetchingProducts());
 
-        api.get("/products")
+        api.get("/products", {
+            params: {
+                ...(categoryId !== "" ? { category: categoryId } : {})
+            }
+        })
         .then((response) => {
             dispatch(actionCreatorFetchingProductsSuccessfull(response.data));
         })

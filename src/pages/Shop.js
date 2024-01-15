@@ -2,17 +2,17 @@ import Clients from "../components/Clients";
 import ProductCard from "../components/ProductCard";
 import ShopCard from "../components/ShopCard";
 
-import product from "../assets/product/example-product.jpeg"
 import Path from "../components/Path";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom/cjs/react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { actionCreatorFetchProducts } from "../store/actions/actionsProduct";
 
 export default function Shop() {
 
     const categories = useSelector( store => store.reducerGlobal.categories );
     const productList = useSelector( store => store.reducerProduct.productList );
+    const [ selectedCategoryId, setSelectedCategoryId ] = useState(null);
 
     const dispatch = useDispatch();
 
@@ -21,6 +21,15 @@ export default function Shop() {
         if(productList.length === 0)
             dispatch(actionCreatorFetchProducts());
     }, [])
+
+    function hCategorySelect(event) {
+        setSelectedCategoryId(event.target.value);
+    }
+ 
+    function onClickFilter() {
+
+        dispatch(actionCreatorFetchProducts(selectedCategoryId));
+    }
 
     return (
 			<>
@@ -65,13 +74,30 @@ export default function Shop() {
 				    		</div>
 				    		<div className="flex">
 				    			<select
-				    				className="mr-[1rem] pr-[2em] pl-[1.3em] text-[0.875rem] border-[1px] rounded-[5px] border-[#DDDDDD] bg-[#F9F9F9]"
-				    				name="cars"
-				    				id="cars"
-				    			>
-				    				<option value="Popularity">Popularity</option>
+                                    onChange={hCategorySelect}
+				    				className="mr-[1rem] pr-[1em] pl-[.5em]  text-[0.875rem] border-r-[.5em] border-r-transparent rounded-[5px] bg-[#F9F9F9]"
+				    				name="categories"
+				    				id="category_select"
+				    			> 
+                                    <option value="">Bir kategori seçiniz</option>
+                                {
+                                    categories.map( category => {
+
+                                        return (
+                                            <option
+                                                key={category.id}
+                                                value={category.id}
+                                            >
+                                            {`${category.gender === "e" ? "Erkek" : "Kadın"} ${category.title}`}
+                                            </option>
+                                        )
+                                    })
+                                }
 				    			</select>
-				    			<button className="font-bold btn-small btn-primary text-[0.875rem]">
+				    			<button
+                                    className="font-bold btn-small btn-primary text-[0.875rem]"
+                                    onClick={onClickFilter}
+                                >
 				    				Filter
 				    			</button>
 				    		</div>
