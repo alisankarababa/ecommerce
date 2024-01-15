@@ -76,7 +76,7 @@ export default function Header() {
                                             <div className="flex flex-col text-clr-second">
                                                 {
                                                     categories.filter(category => category.gender === "e")
-                                                        .map(category => <span className="hover:underline hover:cursor-pointer" onClick={popupState.close}>{category.title}</span>)
+                                                        .map(category => <span key={category.id} className="hover:underline hover:cursor-pointer" onClick={popupState.close}>{category.title}</span>)
                                                 }
                                             </div>
                                         </div>
@@ -87,7 +87,7 @@ export default function Header() {
                                             <div className="flex flex-col text-clr-second">
                                                 {
                                                     categories.filter(category => category.gender === "k")
-                                                        .map(category => <span className="hover:underline hover:cursor-pointer" onClick={popupState.close}>{category.title}</span>)
+                                                        .map(category => <span key={category.id} className="hover:underline hover:cursor-pointer" onClick={popupState.close}>{category.title}</span>)
                                                 }
                                             </div>
                                         </div>
