@@ -12,7 +12,8 @@ export default function Shop() {
 
     const categories = useSelector( store => store.reducerGlobal.categories );
     const productList = useSelector( store => store.reducerProduct.productList );
-    const [ selectedCategoryId, setSelectedCategoryId ] = useState(null);
+    const [ selectedCategoryId, setSelectedCategoryId ] = useState("");
+    const [ selectedDisplayOrder, setSelectedDisplayOrder ] = useState("");
 
     const dispatch = useDispatch();
 
@@ -25,10 +26,14 @@ export default function Shop() {
     function hCategorySelect(event) {
         setSelectedCategoryId(event.target.value);
     }
+
+    function hDisplayOrderSelect(event) {
+        setSelectedDisplayOrder(event.target.value);
+    }
  
     function onClickFilter() {
 
-        dispatch(actionCreatorFetchProducts(selectedCategoryId));
+        dispatch(actionCreatorFetchProducts(selectedCategoryId, selectedDisplayOrder));
     }
 
     return (
@@ -73,6 +78,18 @@ export default function Shop() {
 				    			<i className="p-[1rem] rounded-[5px] border-[1px] border-clr-light-gray-2 text-clr-dark fa-solid fa-list-ul"></i>
 				    		</div>
 				    		<div className="flex">
+                            <select
+                                    onChange={hDisplayOrderSelect}
+				    				className="mr-[1rem] pr-[1em] pl-[.5em]  text-[0.875rem] border-r-[.5em] border-r-transparent rounded-[5px] bg-[#F9F9F9]"
+				    				name="categories"
+				    				id="category_select"
+				    			>
+                                    <option value="">Sıralama Ölçütü</option>
+                                    <option value="price:asc">Fiyat: Düşükten Yükseğe</option>
+                                    <option value="price:desc">Fiyat: Yüksekten Düşüğe</option>
+                                    <option value="rating:asc">Puan: Düşükten Yükseğe</option>
+                                    <option value="rating:desc">Puan: Yüksekten Düşüğe</option>
+				    			</select>
 				    			<select
                                     onChange={hCategorySelect}
 				    				className="mr-[1rem] pr-[1em] pl-[.5em]  text-[0.875rem] border-r-[.5em] border-r-transparent rounded-[5px] bg-[#F9F9F9]"

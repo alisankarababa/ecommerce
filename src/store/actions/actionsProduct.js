@@ -8,7 +8,7 @@ export const eActionsProduct = Object.freeze({
 });
 
 
-export function actionCreatorFetchProducts(categoryId) {
+export function actionCreatorFetchProducts(categoryId, displayOrder) {
 
     return function thunkFunc(dispatch) {
 
@@ -16,7 +16,8 @@ export function actionCreatorFetchProducts(categoryId) {
 
         api.get("/products", {
             params: {
-                ...(categoryId !== "" ? { category: categoryId } : {})
+                ...(categoryId !== "" ? { category: categoryId } : {}),
+                ...(displayOrder !== "" ? { sort: displayOrder } : {}),
             }
         })
         .then((response) => {
