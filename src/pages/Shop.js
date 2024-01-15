@@ -19,9 +19,8 @@ export default function Shop() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-
-        if(productList.length === 0)
-            dispatch(actionCreatorFetchProducts());
+        
+        dispatch(actionCreatorFetchProducts());
     }, [])
 
     function onClickFilter() {
