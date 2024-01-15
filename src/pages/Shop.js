@@ -4,13 +4,23 @@ import ShopCard from "../components/ShopCard";
 
 import product from "../assets/product/example-product.jpeg"
 import Path from "../components/Path";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom/cjs/react-router-dom";
+import { useEffect } from "react";
+import { actionCreatorFetchProducts } from "../store/actions/actionsProduct";
 
 export default function Shop() {
 
     const categories = useSelector( store => store.reducerGlobal.categories );
+    const productList = useSelector( store => store.reducerProduct.productList );
 
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+
+        if(productList.length === 0)
+            dispatch(actionCreatorFetchProducts());
+    }, [])
 
     return (
 			<>
@@ -46,7 +56,7 @@ export default function Shop() {
 				    <section className="container-small">
 				    	<div className="text-clr-second flex flex-col gap-y-[1.5rem] md:flex-row items-center md:justify-between py-[1.5em]">
 				    		<div className="text-[0.875rem] font-bold">
-				    			Showing all 12 results
+				    			Showing all {productList.length} results
 				    		</div>
 				    		<div className="flex items-center gap-x-[1rem]">
 				    			<span className="text-[0.875rem] font-bold">Views:</span>
@@ -67,13 +77,13 @@ export default function Shop() {
 				    		</div>
 				    	</div>
 				    	<div className="my-[3rem] py-[5rem] grid grid-cols-autofill-minmax14.75rem1fr gap-x-[1.875rem] gap-y-[5rem]">
-				    		{Array(12)
-				    			.fill(1)
-				    			.map((item, idx) => {
+				    		{
+                            productList
+				    			.map((product, idx) => {
 				    				return (
 				    					<ProductCard
-				    						key={idx}
-				    						urlImg={product}
+				    						key={product.id}
+				    						urlImg={product.images[0].url}
 				    					/>
 				    				);
 				    			})}
