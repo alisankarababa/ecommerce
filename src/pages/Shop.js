@@ -12,6 +12,7 @@ export default function Shop() {
 
     const categories = useSelector( store => store.reducerGlobal.categories );
     const productList = useSelector( store => store.reducerProduct.productList );
+    const areProductsLoading = useSelector( store => store.reducerProduct.areProductsLoading );
     const [ selectedCategoryId, setSelectedCategoryId ] = useState("");
     const [ selectedDisplayOrder, setSelectedDisplayOrder ] = useState("");
     const [ filterText, setFilterText ] = useState("");
@@ -111,13 +112,19 @@ export default function Shop() {
                                     className="font-bold btn-small btn-primary"
                                     onClick={onClickFilter}
                                 >
-				    				Filter
+				    				Filtrele
 				    			</button>
 				    		</div>
 				    	</div>
 				    	<div className="my-[3rem] py-[5rem] grid grid-cols-autofill-minmax14.75rem1fr gap-x-[1.875rem] gap-y-[5rem]">
 				    		{
-                            productList
+                                areProductsLoading ? 
+                                ( 
+                                    <div className="flex justify-center items-center">
+							            <div className="w-[50px] h-[50px] rounded-full animate-spin border-2 border-solid border-clr-primary border-t-transparent"></div>
+						            </div>
+                                ) :
+                                productList
 				    			.map((product, idx) => {
 				    				return (
 				    					<ProductCard
