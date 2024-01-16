@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom/cjs/react-router-dom";
 import { useEffect, useState } from "react";
 import { actionCreatorFetchProducts, actionCreatorProductSetActivePage } from "../store/actions/actionsProduct";
-import ReactPaginate from 'react-paginate';
+import { Pagination } from "@mui/material";
 
 export default function Shop() {
 
@@ -123,44 +123,47 @@ export default function Shop() {
 				    			</button>
 				    		</div>
 				    	</div>
-				    	<div className="my-[3rem] py-[5rem] grid grid-cols-autofill-minmax14.75rem1fr gap-x-[1.875rem] gap-y-[5rem]">
-				    		{
-                                areProductsLoading ? 
-                                ( 
-                                    <div className="flex justify-center items-center">
-							            <div className="w-[50px] h-[50px] rounded-full animate-spin border-2 border-solid border-clr-primary border-t-transparent"></div>
-						            </div>
-                                ) :
-                                (
-                                    <>
+				    	{
+                            areProductsLoading ? 
+                            ( 
+                                <div className="flex justify-center items-center">
+						            <div className="w-[50px] h-[50px] rounded-full animate-spin border-2 border-solid border-clr-primary border-t-transparent"></div>
+						        </div>
+                            ) :
+                            (
+                                <>
+                                <div className="my-[5rem] grid grid-cols-autofill-minmax14.75rem1fr gap-x-[1.875rem] gap-y-[5rem]">
                                     {
                                         productList
-				    			        .map((product, idx) => {
-				    			        	return (
-				    			        		<ProductCard
-				    			        			key={product.id}
+                                        .map((product, idx) => {
+                                            return (
+                                                <ProductCard
+                                                    key={product.id}
                                                     productName={product.name}
                                                     price={product.price}
                                                     description={product.description}
                                                     rating={product.rating}
-				    			        			urlImg={product.images[0].url}
-				    			        		/>
-				    			        	);
-				    			        })}
-                                        <ReactPaginate
-                                            breakLabel="..."
-                                            nextLabel="next >"
-                                            onPageChange={(e) => dispatch(actionCreatorProductSetActivePage(e.selected))}
-                                            pageRangeDisplayed={5}
-                                            pageCount={pageCount}
-                                            previousLabel="< previous"
-                                            renderOnZeroPageCount={null}
-                                        />
-                                    </>
-                                )
-                                
-                            }
-				    	</div>
+                                                    urlImg={product.images[0].url}
+                                                />
+                                            );
+                                        })
+                                    }
+                                </div>
+                                <div className="flex justify-center">
+                                    <Pagination 
+                                        count={pageCount}
+                                        page={activePage + 1}
+                                        onChange={(e, v) => dispatch(actionCreatorProductSetActivePage(v - 1))}
+                                        showFirstButton
+                                        showLastButton
+                                        color="primary"
+                                        variant="outlined"
+                                        shape="rounded"
+                                    />
+                                </div>
+                                </>
+                            )
+                        }
 				    </section>
                 </div>
 				<Clients />
