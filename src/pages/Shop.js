@@ -6,12 +6,16 @@ import Path from "../components/Path";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom/cjs/react-router-dom";
 import { useEffect, useState } from "react";
-import { actionCreatorFetchProducts } from "../store/actions/actionsProduct";
+import { actionCreatorFetchProducts, actionCreatorProductSetActivePage } from "../store/actions/actionsProduct";
+import ReactPaginate from 'react-paginate';
 
 export default function Shop() {
 
     const categories = useSelector( store => store.reducerGlobal.categories );
     const productList = useSelector( store => store.reducerProduct.productList );
+    const pageCount = useSelector( store => store.reducerProduct.pageCount );
+    const productPerPage = useSelector( store => store.reducerProduct.productPerPage );
+    const activePage = useSelector( store => store.reducerProduct.activePage );
     const areProductsLoading = useSelector( store => store.reducerProduct.areProductsLoading );
     const [ selectedCategoryId, setSelectedCategoryId ] = useState("");
     const [ selectedDisplayOrder, setSelectedDisplayOrder ] = useState("");
@@ -20,9 +24,12 @@ export default function Shop() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        
-        dispatch(actionCreatorFetchProducts());
-    }, [])
+        setSelectedCategoryId("");
+        setSelectedDisplayOrder("");
+        setFilterText("");
+        dispatch(actionCreatorFetchProducts("", "", "", activePage * productPerPage ));
+
+    }, [activePage, productPerPage, dispatch])
 
     function onClickFilter() {
 
@@ -124,19 +131,35 @@ export default function Shop() {
 							            <div className="w-[50px] h-[50px] rounded-full animate-spin border-2 border-solid border-clr-primary border-t-transparent"></div>
 						            </div>
                                 ) :
-                                productList
-				    			.map((product, idx) => {
-				    				return (
-				    					<ProductCard
-				    						key={product.id}
-                                            productName={product.name}
-                                            price={product.price}
-                                            description={product.description}
-                                            rating={product.rating}
-				    						urlImg={product.images[0].url}
-				    					/>
-				    				);
-				    			})}
+                                (
+                                    <>
+                                    {
+                                        productList
+				    			        .map((product, idx) => {
+				    			        	return (
+				    			        		<ProductCard
+				    			        			key={product.id}
+                                                    productName={product.name}
+                                                    price={product.price}
+                                                    description={product.description}
+                                                    rating={product.rating}
+				    			        			urlImg={product.images[0].url}
+				    			        		/>
+				    			        	);
+				    			        })}
+                                        <ReactPaginate
+                                            breakLabel="..."
+                                            nextLabel="next >"
+                                            onPageChange={(e) => dispatch(actionCreatorProductSetActivePage(e.selected))}
+                                            pageRangeDisplayed={5}
+                                            pageCount={pageCount}
+                                            previousLabel="< previous"
+                                            renderOnZeroPageCount={null}
+                                        />
+                                    </>
+                                )
+                                
+                            }
 				    	</div>
 				    </section>
                 </div>
