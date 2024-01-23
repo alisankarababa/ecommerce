@@ -6,13 +6,19 @@ import Path from "../components/Path";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom/cjs/react-router-dom";
 import { useEffect, useState } from "react";
-import { actionCreatorFetchProducts } from "../store/actions/actionsProduct";
+import { actionCreatorFetchProducts, actionCreatorProductSetActivePage } from "../store/actions/actionsProduct";
+import { Pagination } from "@mui/material";
 
 export default function Shop() {
 
     const categories = useSelector( store => store.reducerGlobal.categories );
     const productList = useSelector( store => store.reducerProduct.productList );
+    const pageCount = useSelector( store => store.reducerProduct.pageCount );
+    const productPerPage = useSelector( store => store.reducerProduct.productPerPage );
+    const activePage = useSelector( store => store.reducerProduct.activePage );
     const areProductsLoading = useSelector( store => store.reducerProduct.areProductsLoading );
+    
+    
     const [ selectedCategoryId, setSelectedCategoryId ] = useState("");
     const [ selectedDisplayOrder, setSelectedDisplayOrder ] = useState("");
     const [ filterText, setFilterText ] = useState("");
@@ -20,9 +26,12 @@ export default function Shop() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        
-        dispatch(actionCreatorFetchProducts());
-    }, [])
+        setSelectedCategoryId("");
+        setSelectedDisplayOrder("");
+        setFilterText("");
+        dispatch(actionCreatorFetchProducts("", "", "", activePage * productPerPage ));
+
+    }, [activePage, productPerPage, dispatch])
 
     function onClickFilter() {
 
@@ -60,24 +69,19 @@ export default function Shop() {
                 </div>
 
                 <div>
-				    <section className="container-small">
-				    	<div className="text-clr-second flex flex-col gap-y-[1.5rem] md:flex-row items-center md:justify-between py-[1.5em] text-[0.875rem]">
-				    		<div className="text-[0.875rem] font-bold">
+				    <section className="container-small my-[3rem] py-[5rem] ">
+				    	<div className="text-clr-second flex flex-wrap items-center justify-between gap-x-[4rem] gap-y-[2rem] py-[1.5em] text-[0.875rem]">
+                            <div className="text-[0.875rem] font-bold text-start mt-[1rem]">
 				    			{productList.length} sonuç gösteriliyor
 				    		</div>
-				    		{/* <div className="flex items-center gap-x-[1rem]">
-				    			<span className="text-[0.875rem] font-bold">Views:</span>
-				    			<i className="p-[1rem] rounded-[5px] border-[1px] border-clr-light-gray-2 text-clr-dark fa-solid fa-border-all"></i>
-				    			<i className="p-[1rem] rounded-[5px] border-[1px] border-clr-light-gray-2 text-clr-dark fa-solid fa-list-ul"></i>
-				    		</div> */}
-				    		<div className="flex items-center gap-[.75rem]">
-                            <label className="text-[1rem]">
-                                Arama:{" "}
-                                <input className="p-[.5em] text-[0.875rem] border-[1px] rounded-[5px]" type="text" onChange={e => setFilterText(e.target.value)} />
-                            </label>
-                            <select
+                            <div className="flex flex-wrap items-center gap-x-[1rem]">
+                                <label className="text-[1rem]">
+                                    Arama:{" "}
+                                    <input className="p-[.5em] text-[0.875rem] border-[1px] rounded-[5px]" type="text" onChange={e => setFilterText(e.target.value)} />
+                                </label>
+                                <select
                                     onChange={e => setSelectedDisplayOrder(e.target.value)}
-				    				className="mr-[1rem] pr-[1em] pl-[.5em] py-[.5em]  border-r-[.5em] border-r-transparent rounded-[5px] bg-[#F9F9F9]"
+				    				className="p-[.5em] border-[1px] rounded-[5px] bg-[#F9F9F9]"
 				    				name="categories"
 				    				id="category_select"
 				    			>
@@ -89,24 +93,24 @@ export default function Shop() {
 				    			</select>
 				    			<select
                                     onChange={e => setSelectedCategoryId(e.target.value)}
-				    				className="mr-[1rem] pr-[1em] pl-[.5em] py-[.5em] border-r-[.5em] border-r-transparent rounded-[5px] bg-[#F9F9F9]"
+                                    className="p-[.5em] border-[1px] rounded-[5px] bg-[#F9F9F9]"
 				    				name="categories"
 				    				id="category_select"
-				    			> 
+				    			>
                                     <option value="">Bir kategori seçiniz</option>
-                                {
-                                    categories.map( category => {
+                                    {
+                                        categories.map( category => {
 
-                                        return (
-                                            <option
-                                                key={category.id}
-                                                value={category.id}
-                                            >
-                                            {`${category.gender === "e" ? "Erkek" : "Kadın"} ${category.title}`}
-                                            </option>
-                                        )
-                                    })
-                                }
+                                            return (
+                                                <option
+                                                    key={category.id}
+                                                    value={category.id}
+                                                >
+                                                {`${category.gender === "e" ? "Erkek" : "Kadın"} ${category.title}`}
+                                                </option>
+                                            )
+                                        })
+                                    }
 				    			</select>
 				    			<button
                                     className="font-bold btn-small btn-primary"
@@ -114,30 +118,50 @@ export default function Shop() {
                                 >
 				    				Filtrele
 				    			</button>
-				    		</div>
+                            </div>
 				    	</div>
-				    	<div className="my-[3rem] py-[5rem] grid grid-cols-autofill-minmax14.75rem1fr gap-x-[1.875rem] gap-y-[5rem]">
-				    		{
-                                areProductsLoading ? 
-                                ( 
-                                    <div className="flex justify-center items-center">
-							            <div className="w-[50px] h-[50px] rounded-full animate-spin border-2 border-solid border-clr-primary border-t-transparent"></div>
-						            </div>
-                                ) :
-                                productList
-				    			.map((product, idx) => {
-				    				return (
-				    					<ProductCard
-				    						key={product.id}
-                                            productName={product.name}
-                                            price={product.price}
-                                            description={product.description}
-                                            rating={product.rating}
-				    						urlImg={product.images[0].url}
-				    					/>
-				    				);
-				    			})}
-				    	</div>
+
+				    	{
+                            areProductsLoading ? 
+                            ( 
+                                <div className="flex justify-center items-center">
+						            <div className="w-[50px] h-[50px] rounded-full animate-spin border-2 border-solid border-clr-primary border-t-transparent"></div>
+						        </div>
+                            ) :
+                            (
+                                <>
+                                <div className="my-[5rem] grid grid-cols-autofill-minmax14.75rem1fr gap-x-[1.875rem] gap-y-[5rem]">
+                                    {
+                                        productList
+                                        .map((product, idx) => {
+                                            return (
+                                                <ProductCard
+                                                    key={product.id}
+                                                    productName={product.name}
+                                                    price={product.price}
+                                                    description={product.description}
+                                                    rating={product.rating}
+                                                    urlImg={product.images[0].url}
+                                                />
+                                            );
+                                        })
+                                    }
+                                </div>
+                                <div className="flex justify-center">
+                                    <Pagination 
+                                        count={pageCount}
+                                        page={activePage + 1}
+                                        onChange={(e, v) => dispatch(actionCreatorProductSetActivePage(v - 1))}
+                                        showFirstButton
+                                        showLastButton
+                                        color="primary"
+                                        variant="outlined"
+                                        shape="rounded"
+                                    />
+                                </div>
+                                </>
+                            )
+                        }
 				    </section>
                 </div>
 				<Clients />

@@ -5,6 +5,7 @@ const initialState = {
     productList: [],
     totalProductCount: 0,
     pageCount: 0,
+    productPerPage: 25,
     activePage: 0,
     areProductsLoading: false,
     error: null,
@@ -19,8 +20,13 @@ export default function reducerProduct(state=initialState, action) {
             return { ...state, error: null, areProductsLoading: true };
 
         case eActionsProduct.FETCHING_PRODUCTS_SUCCESS:
-            console.log(action.payload);
-            return { ...state, productList: action.payload.products, totalProductCount: action.payload.total};
+
+            return  {
+                ...state, 
+                productList: action.payload.products,
+                totalProductCount: action.payload.total,
+                pageCount: ( Math.ceil(action.payload.total / state.productPerPage) )
+            };
 
         case eActionsProduct.FETCHING_PRODUCTS_FAIL:
             
@@ -28,6 +34,10 @@ export default function reducerProduct(state=initialState, action) {
 
         case eActionsProduct.FETCHING_PRODUCTS_ENDED:
             return { ...state, areProductsLoading: false };
+
+        case eActionsProduct.SET_ACTIVE_PAGE: 
+
+            return { ...state, activePage: action.payload };
 
         default:
             return state;
