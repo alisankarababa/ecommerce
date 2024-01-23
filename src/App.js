@@ -9,6 +9,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { actionCreatorAutoLogin } from './store/actions/actionsUser';
 import { api } from './api/api';
+import { actionCreatorGlobalFetchCategories } from './store/actions/actionsGlobal';
 
 function App() {
     
@@ -35,6 +36,8 @@ function App() {
             api.defaults.headers.common['Authorization'] = token;
             dispatch(actionCreatorAutoLogin())
         }
+
+        dispatch(actionCreatorGlobalFetchCategories());
 
     }, [])
     

@@ -4,9 +4,25 @@ import IconWithText from "../components/IconWithText";
 import { useSelector } from "react-redux";
 import md5 from "md5";
 
+import HoverMenu from 'material-ui-popup-state/HoverMenu'
+
+import {
+  usePopupState,
+  bindFocus,
+  bindHover,
+  bindMenu,
+} from 'material-ui-popup-state/hooks'
+
+
 export default function Header() {
 
     const loggedInUser = useSelector(store => store.reducerUser.loggedInUser);
+    const categories = useSelector( store => store.reducerGlobal.categories );
+
+    const popupState = usePopupState({
+        variant: 'popover',
+        popupId: 'categoryMenu',
+    })
 
 	return (
 		<header className="">
@@ -39,11 +55,45 @@ export default function Header() {
 							<NavLink to="/home">Home</NavLink>
 						</li>
 						<li className="text-clr-dark">
-							<NavLink to="/shop">
-								Shop
-							</NavLink> {" "}
-                            <i className="fa-solid fa-chevron-down"></i>
-						</li>
+                                <NavLink to="/shop"
+                                    variant="contained"
+                                    {...bindHover(popupState)}
+                                    {...bindFocus(popupState)}
+                                >
+                                    Shop
+                                </NavLink>{" "}
+                                <i className="fa-solid fa-chevron-down"></i>
+                                <HoverMenu
+                                    {...bindMenu(popupState)}
+                                    anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
+                                    transformOrigin={{ vertical: 'top', horizontal: 'left' }}
+                                >
+                                    <div className="p-4 flex gap-10">
+                                        <div>
+                                            <div className="text-clr-dark hover:underline hover:cursor-pointer">
+                                                ERKEK
+                                            </div>
+                                            <div className="flex flex-col text-clr-second">
+                                                {
+                                                    categories.filter(category => category.gender === "e")
+                                                        .map(category => <span key={category.id} className="hover:underline hover:cursor-pointer" onClick={popupState.close}>{category.title}</span>)
+                                                }
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div className="text-clr-dark hover:underline hover:cursor-pointer">
+                                                KADIN
+                                            </div>
+                                            <div className="flex flex-col text-clr-second">
+                                                {
+                                                    categories.filter(category => category.gender === "k")
+                                                        .map(category => <span key={category.id} className="hover:underline hover:cursor-pointer" onClick={popupState.close}>{category.title}</span>)
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </HoverMenu>
+						</li>   
 						<li>
 							<NavLink to="/about">About</NavLink>
 						</li>

@@ -1,4 +1,4 @@
-export default function ProductCard({ urlImg, className}) {
+export default function ProductCard({ productName, price, rating, description, urlImg, className}) {
 
     const defaultClasses = "flex flex-col items-center gap-y-[1.5625rem]";
 
@@ -10,12 +10,10 @@ export default function ProductCard({ urlImg, className}) {
 				<img className="img-absolute" src={urlImg} alt="img-product" />
 			</div>
 			<div className="flex flex-col grow gap-y-[0.625rem]">
-				<h5 className="text-clr-dark font-bold">Graphic Design</h5>
-				<span className="text-[0.875rem] text-clr-second">English Department</span>
-				<div className="flex justify-center gap-x-[0.3125rem]">
-					<span className="text-clr-muted">$16.48</span>
-					<span className="text-clr-secondary-1">$6.48</span>
-				</div>
+				<h5 className="text-clr-dark font-bold">{productName}</h5>
+				<span className="text-[0.875rem] text-clr-second">{description}</span>
+                <span className="text-clr-secondary-1">{price} ₺</span>
+                <span className="text-clr-secondary-1">puan: {rating}</span>
 				<div className="flex justify-center gap-x-[0.3125rem]">
 					<div className="w-[8%] aspect-square rounded-full bg-bgclr-primary" />
 					<div className="w-[8%] aspect-square rounded-full bg-bgclr-secondary-1" />
