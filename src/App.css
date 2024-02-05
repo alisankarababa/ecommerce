@@ -80,7 +80,7 @@
 }
 
 .btn-primary {
-    @apply text-clr-light bg-bgclr-primary
+    @apply text-clr-light bg-bgclr-primary border-[1px] border-clr-primary;
 }
 
 .btn-primary-outline {
