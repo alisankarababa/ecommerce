@@ -4,9 +4,13 @@ import ProductNavBar from "../components/product-page/ProductNavBar";
 import SectionMid from "../components/product-page/SectionMid";
 import SectionProductBestSeller from "../components/product-page/SectionProductBestSeller";
 import ProductCarouselWithDetails from "../components/product-page/ProductCarouselWithDetails";
+import { useParams } from "react-router-dom/cjs/react-router-dom";
 
 
 export default function Product() {
+
+    const { product_id } = useParams();
+
 	return (
 		<>
 			<div className="bg-bgclr-ligth-gray-1">
@@ -15,7 +19,7 @@ export default function Product() {
 				</div>
 			</div>
 
-			<ProductCarouselWithDetails />
+			<ProductCarouselWithDetails productId={product_id}/>
 			<ProductNavBar />
 			<SectionMid />
 			<SectionProductBestSeller />

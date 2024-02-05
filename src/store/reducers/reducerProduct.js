@@ -9,6 +9,13 @@ const initialState = {
     activePage: 0,
     areProductsLoading: false,
     error: null,
+    queryParams: {
+        category: 0,
+        filter: "",
+        sort: "",
+        offset: 0,
+        limit: 25,
+    }
 }
 
 
@@ -36,9 +43,36 @@ export default function reducerProduct(state=initialState, action) {
             return { ...state, areProductsLoading: false };
 
         case eActionsProduct.SET_ACTIVE_PAGE: 
+            
+            const queryParamsBeforeActivePageSet = { ...state.queryParams };
+            queryParamsBeforeActivePageSet.offset = action.payload * state.productPerPage;
 
-            return { ...state, activePage: action.payload };
+            return { ...state, activePage: action.payload, queryParams: { ...queryParamsBeforeActivePageSet } };
 
+        case eActionsProduct.SET_QUERY_PARAM_CATEGORY:
+
+            const categoryQueryParam = { ...state.queryParams };
+            categoryQueryParam.category = action.payload;
+            return { ...state, queryParams: categoryQueryParam };
+
+        case eActionsProduct.SET_QUERY_PARAM_SORT:
+
+            const sortQueryParam = { ...state.queryParams };
+            sortQueryParam.sort = action.payload;
+            return { ...state, queryParams: sortQueryParam };
+        
+        case eActionsProduct.SET_QUERY_PARAM_FILTER:
+
+            const filterQueryParam = { ...state.queryParams };
+            filterQueryParam.filter = action.payload;
+            return { ...state, queryParams: filterQueryParam };
+
+        case eActionsProduct.SET_QUERY_PARAMS_TO_DEFAULT: 
+            return { ...state, queryParams: { ...initialState.queryParams}, activePage: 0 };
+            
+        case eActionsProduct.SET_QUERY_PARAMS:
+            return { ...state, queryParams: action.payload, activePage: 0 };
+        
         default:
             return state;
     }

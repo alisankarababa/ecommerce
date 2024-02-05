@@ -5,10 +5,16 @@ import { eArrow, getCustomRenderArrowFunction } from "../../utils/Carousel";
 
 import productCarouselImg1 from "../../assets/page-product/product-carousel/img1.jpeg";
 import productCarouselImg2 from "../../assets/page-product/product-carousel/img2.jpeg";
+import { useSelector } from "react-redux";
 
 
 //TODO custom thumbnails
-export default function ProductCarouselWithDetails() {
+export default function ProductCarouselWithDetails({productId}) {
+
+    const productList = useSelector((store) => store.reducerProduct.productList);
+
+    const foundProduct = productList.find( product => product.id === Number(productId));
+
 
     return (
         <div className="bg-bgclr-ligth-gray-1 pb-[3em]">
@@ -21,16 +27,16 @@ export default function ProductCarouselWithDetails() {
                     renderArrowPrev={getCustomRenderArrowFunction(eArrow.prev)}
                     renderArrowNext={getCustomRenderArrowFunction(eArrow.next)}
                 >
-                    <img
-                        className="w-100 aspect-square object-cover"
-                        src={productCarouselImg1}
-                        alt="carousel-img"
-                    />
-                    <img
-                        className="w-100 aspect-square object-cover"
-                        src={productCarouselImg2}
-                        alt="carousel-img"
-                    />
+                    {
+                        foundProduct.images.map( image => 
+                            <img
+                                key={image.url}
+                                className="w-100 aspect-square object-cover"
+                                src={image.url}
+                                alt={image.url}
+                            />
+                        )
+                    }
                 </Carousel>
             </div>
             <div className="basis-[348px] grow pt-[0.6875em] pl-[1.5em] pr-[1.5em] text-left">
@@ -46,17 +52,15 @@ export default function ProductCarouselWithDetails() {
                     </span>
                 </div>
                 <div className="text-clr-dark text-[1.5rem] font-bold mb-[0.5rem]">
-                    $1,139.33
+                    ${foundProduct.price}
                 </div>
                 <div className="mb-[2rem]">
                     <span className="text-clr-second text-[0.875rem] font-bold">Availability :</span>
-                    <span className="text-clr-primary text-[0.875rem] font-bold"> In Stock</span>
+                    <span className="text-clr-primary text-[0.875rem] font-bold"> {foundProduct.stock > 0 ? "In Stock" : "Is Not In Stock"} </span>
                 </div>
 
                 <p className="text-[0.875rem] text-[#858585]">
-                    Met minim Mollie non desert Alamo est sit cliquey dolor do met
-                    sent. RELIT official consequent door ENIM RELIT Mollie. Excitation
-                    venial consequent sent nostrum met.
+                    {foundProduct.description}
                 </p>
                 <hr className="border-clr-muted my-[1.5rem]"/>
 

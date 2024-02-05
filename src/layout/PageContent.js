@@ -16,7 +16,12 @@ export default function PageContent() {
     return (
         
 		<Switch>
-            <Route exact path="/shop/:gender/:category">
+
+            <Route exact path="/shop/:gender/:category_title/:product_id/:product_name_slug">
+                <Product />
+            </Route>
+
+            <Route exact path="/shop/:gender/:category_title">
                 <Shop />
             </Route>
 

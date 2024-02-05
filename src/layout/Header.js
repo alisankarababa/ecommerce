@@ -97,9 +97,9 @@ export default function Header() {
                                                         .map(category => 
                                                             <Link
                                                                 key={category.id} 
-                                                                to={`/shop/kadın/${category.title}`}
+                                                                to={`/shop/kadın/${category.title.toLowerCase()}`}
                                                                 className="hover:underline hover:cursor-pointer"
-                                                                onClick={popupState.close}>{category.title.toLowerCase()}
+                                                                onClick={popupState.close}>{category.title}
                                                             </Link>
                                                         )
                                                 }
