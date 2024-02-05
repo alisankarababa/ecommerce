@@ -76,7 +76,14 @@ export default function Header() {
                                             <div className="flex flex-col text-clr-second">
                                                 {
                                                     categories.filter(category => category.gender === "e")
-                                                        .map(category => <span key={category.id} className="hover:underline hover:cursor-pointer" onClick={popupState.close}>{category.title}</span>)
+                                                    .map(category => 
+                                                        <Link 
+                                                            key={category.id} 
+                                                            to={`/shop/erkek/${category.title.toLowerCase()}`}
+                                                            className="hover:underline hover:cursor-pointer" 
+                                                            onClick={popupState.close}>{category.title}
+                                                        </Link>
+                                                    )
                                                 }
                                             </div>
                                         </div>
@@ -87,7 +94,14 @@ export default function Header() {
                                             <div className="flex flex-col text-clr-second">
                                                 {
                                                     categories.filter(category => category.gender === "k")
-                                                        .map(category => <span key={category.id} className="hover:underline hover:cursor-pointer" onClick={popupState.close}>{category.title}</span>)
+                                                        .map(category => 
+                                                            <Link
+                                                                key={category.id} 
+                                                                to={`/shop/kadın/${category.title.toLowerCase()}`}
+                                                                className="hover:underline hover:cursor-pointer"
+                                                                onClick={popupState.close}>{category.title}
+                                                            </Link>
+                                                        )
                                                 }
                                             </div>
                                         </div>
