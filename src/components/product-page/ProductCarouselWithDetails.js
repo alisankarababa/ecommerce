@@ -3,14 +3,15 @@ import { Carousel } from "react-responsive-carousel";
 import { eArrow, getCustomRenderArrowFunction } from "../../utils/Carousel";
 
 
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { actionCreatorShoppingCartAddProduct } from "../../store/actions/actionsShoppingCart";
 
-
-//TODO custom thumbnails
 export default function ProductCarouselWithDetails({productId}) {
 
     const productList = useSelector((store) => store.reducerProduct.productList);
+    const dispatch = useDispatch();
 
+    //TODO if product is not in store ie if the page opened in another tab, fetch the product  using productId
     const foundProduct = productList.find( product => product.id === Number(productId));
 
 
@@ -73,7 +74,10 @@ export default function ProductCarouselWithDetails({productId}) {
                 <div className="flex items-center gap-x-[0.625rem]">
                     <button className="btn-small btn-primary font-bold">Select Options</button>
                     <i className="aspect-square rounded-full p-[0.5em] border-[1px] border-clr-muted text-[1.25rem] fa-regular fa-heart"></i>
-                    <i className="aspect-square rounded-full p-[0.5em] border-[1px] border-clr-muted text-[1.25rem] fa-solid fa-cart-shopping"></i>
+                    <i
+                        onClick={() => dispatch(actionCreatorShoppingCartAddProduct(foundProduct))}
+                        className="cursor-pointer aspect-square rounded-full p-[0.5em] border-[1px] border-clr-muted text-[1.25rem] fa-solid fa-cart-shopping">
+                    </i>
                     <i className="aspect-square rounded-full p-[0.5em] border-[1px] border-clr-muted text-[1.25rem] fa-solid fa-eye"></i>
                 </div>
             </div>

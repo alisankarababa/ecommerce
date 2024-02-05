@@ -21,6 +21,14 @@ export default function reducerShoppingCart(state=initialState, action) {
 
         case eActionsShoppingCart.ADD_PRODUCT:
             
+            const cartCopy = [ ...state.cart ];
+
+            const foundCartItem = cartCopy.find( cartItem => cartItem.product.id === action.payload.id );
+            if(foundCartItem) {
+                ++foundCartItem.count;
+                return { ...state, cart: cartCopy };
+            }
+            
             const cartAfterAddition = [ ...state.cart, { count: 1, product: action.payload } ];
             return { ...state, cart: cartAfterAddition};
 
