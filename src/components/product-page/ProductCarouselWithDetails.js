@@ -3,8 +3,6 @@ import { Carousel } from "react-responsive-carousel";
 import { eArrow, getCustomRenderArrowFunction } from "../../utils/Carousel";
 
 
-import productCarouselImg1 from "../../assets/page-product/product-carousel/img1.jpeg";
-import productCarouselImg2 from "../../assets/page-product/product-carousel/img2.jpeg";
 import { useSelector } from "react-redux";
 
 
