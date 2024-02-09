@@ -72,7 +72,7 @@ function Cart() {
                     }
 
                     <div className="text-[1rem]">
-                        <button className="btn-small btn-primary-outline mr-[1rem]">Sepete Git</button>
+                        <Link to="/shopping_cart" className="btn-small btn-primary-outline mr-[1rem]">Sepete Git</Link>
                         <button className="btn-small btn-primary">Siparişi Tamamla</button>
                     </div>
 
