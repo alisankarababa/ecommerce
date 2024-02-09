@@ -8,14 +8,17 @@ import Team from "../pages/Team"
 import Contact from '../pages/Contact';
 import SignUp from '../pages/SignUp';
 import Login from '../pages/Login';
+import ShoppingCart from '../pages/ShoppingCart';
 
 export default function PageContent() {
 	
-    
-    
     return (
         
 		<Switch>
+
+            <Route exact path="/shopping_cart">
+                <ShoppingCart />
+            </Route>
 
             <Route exact path="/shop/:gender/:category_title/:product_id/:product_name_slug">
                 <Product />
