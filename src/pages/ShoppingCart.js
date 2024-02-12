@@ -10,6 +10,7 @@ import {
 	actionCreatorShoppingCartDecrementProductCount,
 	actionCreatorShoppingCartIncrementProductCount,
 	actionCreatorShoppingCartRemoveProduct,
+	actionCreatorShoppingCartToggleCheck,
 } from "../store/actions/actionsShoppingCart";
 
 function CountButtonGroup({
@@ -60,6 +61,16 @@ export default function ShoppingCart() {
 								className="h-[150px] p-[1rem]"
 								sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
 							>
+								<TableCell className="w-[90px]" component="th" scope="row">
+									<input
+										type="checkbox"
+										name="myCheckbox"
+										checked={cartItem.checked}
+										onChange={() => dispatch(
+											actionCreatorShoppingCartToggleCheck(cartItem.product.id)
+										)}
+									/>
+								</TableCell>
 								<TableCell className="w-[90px]" component="th" scope="row">
 									<img
 										className="w-full h-full object-cover"
