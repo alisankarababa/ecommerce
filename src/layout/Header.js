@@ -28,7 +28,7 @@ function CartItem({cartItem}) {
                     Adet: {cartItem.count}
                 </div>
                 <div className="text-clr-primary">
-                    ${cartItem.count * cartItem.product.price}
+                    ${(cartItem.count * cartItem.product.price).toFixed(2)}
                 </div>
             </div>
         </div>
