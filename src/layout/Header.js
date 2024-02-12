@@ -17,7 +17,7 @@ function CartItem({cartItem}) {
 
     return (
         <div className="flex gap-[1rem] py-[1rem] font-semibold">
-            <div className="flex-[1] aspect-[3/5] border-[1px] border-clr-second rounded-[10px] overflow-hidden">
+            <div className="flex-[1] aspect-[3/5] overflow-hidden">
                 <img className="h-full w-full object-cover overflow-hidden" src={cartItem.product.images[0].url} alt="product-img"/>
             </div>
             <div className="flex-[4]">
