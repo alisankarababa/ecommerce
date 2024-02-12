@@ -5,7 +5,8 @@ export const eActionsShoppingCart = Object.freeze({
     ADD_PRODUCT: "actionShoppingCart/ adding product",
     REMOVE_PRODUCT: "actionShoppingCart/ removing product",
     INCREMENT_CNT_PRODUCT: "actionShoppingCart/ increment product count",
-    DECREMENT_CNT_PRODUCT: "actionShoppingCart/ decrement product count"
+    DECREMENT_CNT_PRODUCT: "actionShoppingCart/ decrement product count",
+    TOGGLE_CHECK: "actionShoppingCart/ toggle product check"
 });
 
 export function actionCreatorShoppingCartSetPayment(payment) {
@@ -37,3 +38,9 @@ export function actionCreatorShoppingCartDecrementProductCount(productId) {
     
     return { type: eActionsShoppingCart.DECREMENT_CNT_PRODUCT, payload: productId };
 }
+
+export function actionCreatorShoppingCartToggleCheck(productId) {
+    
+    return { type: eActionsShoppingCart.TOGGLE_CHECK, payload: productId };
+}
+

@@ -13,16 +13,90 @@ import {
   bindMenu,
 } from 'material-ui-popup-state/hooks'
 
+function CartItem({cartItem}) {
+
+    return (
+        <div className="flex gap-[1rem] py-[1rem] font-semibold">
+            <div className="flex-[1] aspect-[3/5] overflow-hidden">
+                <img className="h-full w-full object-cover overflow-hidden" src={cartItem.product.images[0].url} alt="product-img"/>
+            </div>
+            <div className="flex-[4]">
+                <div>
+                    <span>{cartItem.product.name}</span> <span className="font-normal">{cartItem.product.description}</span>
+                </div>
+                <div className="text-clr-second">
+                    Adet: {cartItem.count}
+                </div>
+                <div className="text-clr-primary">
+                    ${(cartItem.count * cartItem.product.price).toFixed(2)}
+                </div>
+            </div>
+        </div>
+    );
+}
+
+function Cart() {
+
+    const cart = useSelector ( store => store.reducerShoppingCart.cart )
+    
+    const cartPopupState = usePopupState({
+        variant: 'popover',
+        popupId: 'cart',
+    })
+    
+    return (
+        <>
+            <IconWithText 
+                classIcon="fa-solid fa-cart-shopping" 
+                text={" " + cart.length }
+                {...bindHover(cartPopupState)}
+                {...bindFocus(cartPopupState)}
+                variant="contained"
+            />
+            <HoverMenu
+                {...bindMenu(cartPopupState)}
+                anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+                transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+            >
+                <div className="p-[1.5rem] text-clr-dark max-w-[400px] flex flex-col gap-y-[1rem]">
+                    <div className="font-semibold">
+                        Sepetim ({cart.length} Ürün)
+                    </div>
+
+                    {
+                        cart.map( cartItem =>
+                            <div key={cartItem.product.id} className="border-b-[1px]">
+                                <CartItem cartItem={cartItem} />
+                            </div>
+                        )
+                    }
+
+                    <div className="text-[1rem]">
+                        <Link to="/shopping_cart" className="btn-small btn-primary-outline mr-[1rem]">Sepete Git</Link>
+                        <button className="btn-small btn-primary">Siparişi Tamamla</button>
+                    </div>
+
+                </div>
+            </HoverMenu>
+        </>    
+    )
+
+    
+}
+
 
 export default function Header() {
 
     const loggedInUser = useSelector(store => store.reducerUser.loggedInUser);
     const categories = useSelector( store => store.reducerGlobal.categories );
+    const cart = useSelector ( store => store.reducerShoppingCart.cart )
 
     const popupState = usePopupState({
         variant: 'popover',
         popupId: 'categoryMenu',
     })
+
+    
 
 	return (
 		<header className="">
@@ -146,7 +220,7 @@ export default function Header() {
 							<i className="fa-solid fa-magnifying-glass"></i>
 						</li>
 						<li>
-                            <IconWithText classIcon="fa-solid fa-cart-shopping" text=" 1"/>
+                            <Cart />
 						</li>
 						<li>
                             <IconWithText classIcon="fa-regular fa-heart" text=" 1"/>

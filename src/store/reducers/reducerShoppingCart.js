@@ -21,7 +21,15 @@ export default function reducerShoppingCart(state=initialState, action) {
 
         case eActionsShoppingCart.ADD_PRODUCT:
             
-            const cartAfterAddition = [ ...state.cart, { count: 1, product: action.payload } ];
+            const cartCopy = [ ...state.cart ];
+
+            const foundCartItem = cartCopy.find( cartItem => cartItem.product.id === action.payload.id );
+            if(foundCartItem) {
+                ++foundCartItem.count;
+                return { ...state, cart: cartCopy };
+            }
+            
+            const cartAfterAddition = [ ...state.cart, { count: 1, checked: true, product: action.payload } ];
             return { ...state, cart: cartAfterAddition};
 
         case eActionsShoppingCart.REMOVE_PRODUCT:
@@ -56,6 +64,19 @@ export default function reducerShoppingCart(state=initialState, action) {
             })
 
             return { ...state, cart: cartAfterDecrement };
+
+        case eActionsShoppingCart.TOGGLE_CHECK:
+            const cartAfterToggleCheck =  [ ...state.cart ].map( cartItem => {
+
+                if( cartItem.product.id === action.payload ) {
+
+                    return { ...cartItem, checked: (cartItem.checked ? false : true) };
+                }
+
+                return cartItem;
+            })
+
+            return { ...state, cart: cartAfterToggleCheck };
     
         default:
             return state;
