@@ -219,8 +219,10 @@ export default function ShoppingCart() {
 				<div className="flex-[4]">
 					<CartTable />
 				</div>
-				<div className="flex-[1]">
+				<div className="flex-[1] flex flex-col gap-y-[1rem]">
+                    <button className="btn btn-primary w-full py-2 rounded-[5px]">Sepeti Onayla <span className="align-middle">{">"}</span></button>
 					<OrderSummaryBox />
+                    <button className="btn btn-primary w-full py-2 rounded-[5px]">Sepeti Onayla <span className="align-middle">{">"}</span></button>
 				</div>
 			</div>
 		</div>
