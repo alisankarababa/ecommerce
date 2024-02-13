@@ -14,6 +14,7 @@ import {
 } from "../store/actions/actionsShoppingCart";
 
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 function CountButtonGroup({
 	currentCount,
@@ -220,9 +221,9 @@ export default function ShoppingCart() {
 					<CartTable />
 				</div>
 				<div className="flex-[1] flex flex-col gap-y-[1rem]">
-                    <button className="btn btn-primary w-full py-2 rounded-[5px]">Sepeti Onayla <span className="align-middle">{">"}</span></button>
+                    <Link to="/order" className="btn btn-primary w-full py-2 rounded-[5px]">Sepeti Onayla <span className="align-middle">{">"}</span></Link>
 					<OrderSummaryBox />
-                    <button className="btn btn-primary w-full py-2 rounded-[5px]">Sepeti Onayla <span className="align-middle">{">"}</span></button>
+                    <Link to="/order" className="btn btn-primary w-full py-2 rounded-[5px]">Sepeti Onayla <span className="align-middle">{">"}</span></Link>
 				</div>
 			</div>
 		</div>
