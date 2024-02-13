@@ -1,5 +1,7 @@
 import { Switch, Route, Redirect } from 'react-router-dom/cjs/react-router-dom';
 
+import PrivateRoute from '../components/PrivateRoute';
+
 import Shop from "../pages/Shop"
 import Home from "../pages/Home"
 import Product from "../pages/Product"
@@ -9,12 +11,17 @@ import Contact from '../pages/Contact';
 import SignUp from '../pages/SignUp';
 import Login from '../pages/Login';
 import ShoppingCart from '../pages/ShoppingCart';
+import Order from '../pages/Order';
 
 export default function PageContent() {
 	
     return (
         
 		<Switch>
+
+            <PrivateRoute exact path="/order">
+                <Order />
+            </PrivateRoute>
 
             <Route exact path="/shopping_cart">
                 <ShoppingCart />
