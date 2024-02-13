@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { actionCreatorUserLogin } from "../store/actions/actionsUser";
 import InputRHF from "../components/InputRHF";
+import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
 
 function LoginForm({ onSubmit }) {
 	const {
@@ -18,6 +19,8 @@ function LoginForm({ onSubmit }) {
 	function submit(data) {
 		onSubmit(data);
 	}
+
+
 
 	return (
 		<div className="bg-bgclr-light">
@@ -77,6 +80,10 @@ export default function Login() {
 
     const history = useHistory();
     const dispatch = useDispatch();
+    let location = useLocation();
+
+    let fromPath  = location.state && location.state.from.pathname;
+
     
     function onSubmit(data) {
 
@@ -87,7 +94,12 @@ export default function Login() {
             
             if(isLoginSuccessFull) {
                 toast.success("Login succesfull!");
-                history.push("/home");
+                if(fromPath) {
+                    history.push(fromPath);
+
+                } else {
+                    history.push("/home");
+                }
             }
 
             else
