@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { useHistory } from "react-router-dom";
@@ -12,7 +12,7 @@ function LoginForm({ onSubmit }) {
 		register,
 		handleSubmit,
 		formState: { errors, isValid },
-	} = useForm({ mode: "onBlur"});
+	} = useForm({ mode: "onChange"});
 
     const isSubmitInProgress = useSelector( store => store.reducerUser.isLoggingInInProgress );
 
@@ -81,8 +81,22 @@ export default function Login() {
     const history = useHistory();
     const dispatch = useDispatch();
     let location = useLocation();
+    const loggedInUser = useSelector( store => store.reducerUser.loggedInUser );
 
     let fromPath  = location.state && location.state.from.pathname;
+
+    useEffect(() => {
+
+        if(loggedInUser) {
+            if(fromPath) {
+                history.push(fromPath);
+
+            } else {
+                history.push("/home");
+            }
+        }
+
+    }, [loggedInUser, fromPath, history])
 
     
     function onSubmit(data) {
