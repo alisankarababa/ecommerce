@@ -18,6 +18,7 @@ import {
 	actionCreatorProductSetQueryParametersToDefault,
 } from "../store/actions/actionsProduct";
 import { Pagination } from "@mui/material";
+import { actionCreatorShoppingCartAddProduct } from "../store/actions/actionsShoppingCart";
 
 function SearchBar(props) {
 	const categories = useSelector((store) => store.reducerGlobal.categories);
@@ -160,6 +161,8 @@ function ProductDisplay(props) {
 	const productList = useSelector((store) => store.reducerProduct.productList);
 	const categories = useSelector((store) => store.reducerGlobal.categories);
 
+    const dispatch = useDispatch();
+
 	return (
 		<div className="my-[5rem] grid grid-cols-autofill-minmax14.75rem1fr gap-x-[1.875rem] gap-y-[5rem]">
 			{productList.map((product, idx) => {
@@ -168,19 +171,18 @@ function ProductDisplay(props) {
                 if(!foundCategory)
                     return null; //TODO null??
 
-                
-
-
 				return (
-                    <Link key={product.id} to={`/shop/${foundCategory.gender === "e" ? "erkek" : "kadın"}/${foundCategory.title.toLowerCase()}/${product.id}/${product.name}`}>
-					    <ProductCard
-					    	productName={product.name}
-					    	price={product.price}
-					    	description={product.description}
-					    	rating={product.rating}
-					    	urlImg={product.images[0].url}
-					    />
-                    </Link>
+					<div className="">
+                        <Link key={product.id} to={`/shop/${foundCategory.gender === "e" ? "erkek" : "kadın"}/${foundCategory.title.toLowerCase()}/${product.id}/${product.name}`}>
+                            <ProductCard product={product}/>
+                        </Link>
+                        <button
+                            className="btn btn-small btn-primary mx-auto mt-[1rem] block"
+                            onClick={() => dispatch(actionCreatorShoppingCartAddProduct(product))}
+                        >
+                            Sepete Ekle
+                        </button>
+                    </div>
 				);
 			})}
 		</div>
