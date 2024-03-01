@@ -3,8 +3,10 @@ export const keyToken = "token";
 
 const initialState = {
     loggedInUser: null,
+    addressList: [],
     errorLoggingIn: null,
     isLoggingInInProgress: false,
+    isFetchingAddress: false,
 }
 
 export default function reducerUser(state=initialState, action) {
@@ -24,6 +26,19 @@ export default function reducerUser(state=initialState, action) {
 
         case eActionsUser.AUTOLOGIN_SENDING_REQUEST:
             return { ...state, isLoggingInInProgress: true };
+
+        case eActionsUser.ADDRESS_FETCHING_STARTED:
+            return { ...state, isFetchingAddress: true };
+        
+        case eActionsUser.ADDRESS_FETCHING_SUCCESS:
+            return { ...state, addressList: action.payload };
+
+        case eActionsUser.ADDRESS_FETCHING_FAILED:
+            console.log(action.payload);
+            return state;
+
+        case eActionsUser.ADDRESS_FETCHING_ENDED:
+            return { ...state, isFetchingAddress: false };
 
         default:
             return state;
