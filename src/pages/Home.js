@@ -87,7 +87,7 @@ export default function Home() {
 				</div>
 			</section>
 
-            <section className="container-small">
+            {/* <section className="container-small text-center">
 
                 <h2 className="text-clr-second text-[1.25rem] mb-[0.625rem]">Featured Products</h2>
                 <h3 className="text-clr-dark font-bold text-[1.5rem] mb-[0.625rem]">BESTSELLER PRODUCTS</h3>
@@ -98,7 +98,7 @@ export default function Home() {
 					return <ProductCard key={idx} urlImg={product} />;
 				})}
                 </div>
-			</section>
+			</section> */}
 
             <section className="container-big">
             <Carousel
@@ -169,7 +169,7 @@ export default function Home() {
                 </div>
             </section>
 
-            <section className="container-small py-[7rem]">
+            <section className="container-small py-[7rem] text-center">
                 <span className="block mb-[0.625rem] font-bold text-[0.875rem] text-clr-primary">Practice Advice</span>
                 <h2 className="mb-[0.625rem] font-bold text-clr-dark text-[2.5rem]">Featured Posts</h2>
                 <p className="max-w-[44%] mx-auto mb-[5rem] text-clr-second text-[0.875rem]">Problems trying to resolve the conflict between <br/>the two major realms of Classical physics: Newtonian mechanics </p>
